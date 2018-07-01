@@ -1,28 +1,29 @@
-<template>
-  <div id="app" v-bind:class="currentPassage" class="container">
+<template lang="pug">
 
+  #app.container(v-bind:class='currentPassage')
+  
+    passage(@enter="consoleLog('alarm going off')" title='morning-alarm')
+      p Your alarm wakes you *beeep* *beeep* *beep*
+      p
+        | You consider hitting 
+        hyperlink(@go='incrementTime(10)' to='snooze') snooze
+        |  or maybe  if(s.sleptInMinutes &gt; 40) { _finally_ } turning off your alarm.
 
-    <Passage @enter="consoleLog('alarm going off')" title="morning-alarm">
-      <p>Your alarm wakes you *beeep* *beeep* *beep*</p>
+    passage(title='snooze')
+      p
+        | You turn off your alarm and look at the time 
+        clock(:timestamp='currentTime') .
+      p You get out of bed and stand up
+      p
+        hyperlink(to='deep-sleep') You drift off back to sleep...
 
-      <p>You consider hitting <Hyperlink @go="incrementTime(10)" to="snooze">snooze</Hyperlink> or maybe  if(s.sleptInMinutes > 40) { _finally_ } [[turning off your alarm->turn off alarm]].</p>
-    </Passage>
+    passage(title='deep-sleep')
+      p
+        hyperlink(to='morning-alarm') You dream about Vue...
 
-    <Passage title="snooze">
-      <p>You turn off your alarm and look at the time <Clock :timestamp="currentTime" />.</p>
+  
+    .debug-footer current passage: {{ currentPassage }}
 
-      <p>[[You get out of bed and stand up->stand up]]</p>
-
-      <p><Hyperlink to="deep-sleep">You drift off back to sleep...</Hyperlink></p>
-    </Passage>
-
-    <Passage title="deep-sleep">
-      <p><Hyperlink to="morning-alarm">You dream about Vue...</Hyperlink></p>
-    </Passage>
-
-    
-    <div class="debug-footer">current passage: {{ currentPassage }}</div>
-  </div>
 </template>
 
 <script>
