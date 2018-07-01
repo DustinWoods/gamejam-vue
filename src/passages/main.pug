@@ -1,0 +1,18 @@
+passage(@enter="consoleLog('alarm going off')" title='morning-alarm')
+  p Your alarm wakes you *beeep* *beeep* *beep*
+  p
+    | You consider hitting 
+    hyperlink(@go='incrementTime(10)' to='snooze') snooze
+    |  or maybe  if(s.sleptInMinutes &gt; 40) { _finally_ } turning off your alarm.
+
+passage(title='snooze')
+  p
+    | You turn off your alarm and look at the time 
+    clock(:timestamp='currentTime') .
+  p You get out of bed and stand up
+  p
+    hyperlink(to='deep-sleep') You drift off back to sleep...
+
+passage(title='deep-sleep')
+  p
+    hyperlink(to='morning-alarm') You dream about Vue...
