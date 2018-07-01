@@ -1,9 +1,9 @@
 <template>
   <div id="app" v-bind:class="currentPassage" class="container">
-    <Passage title="morning-alarm">
+    <Passage @enter="consoleLog('alarm going off')" title="morning-alarm">
       <p>Your alarm wakes you *beeep* *beeep* *beep*</p>
 
-      <p>You consider hitting <Hyperlink to="snooze">snooze</Hyperlink> or maybe  if(s.sleptInMinutes > 40) { _finally_ } [[turning off your alarm->turn off alarm]].</p>
+      <p>You consider hitting <Hyperlink @go="consoleLog('snooze')" to="snooze">snooze</Hyperlink> or maybe  if(s.sleptInMinutes > 40) { _finally_ } [[turning off your alarm->turn off alarm]].</p>
     </Passage>
     <Passage title="snooze">
       <p>You turn off your alarm and look at the time <span class="clock-time am">6<i>:</i>00</span>.</p>
@@ -31,6 +31,9 @@ export default {
     Hyperlink,
   },
   methods: {
+    consoleLog(msg) {
+      console.log("DID IT" + msg);
+    },
     ...mapMutations([
       'goToPassage',
     ])

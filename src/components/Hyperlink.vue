@@ -1,5 +1,5 @@
 <template>
-  <a class="passage-hyperlink" v-on:click="clickLink"><slot /></a>
+  <a class="passage-hyperlink" @click="clickLink"><slot /></a>
 </template>
 
 <script>
@@ -10,6 +10,7 @@ export default {
   ],
   methods: {
     clickLink() {
+      this.$emit('go', this.to);
       this.$store.commit('goToPassage',this.to);
     }
   },

@@ -1,23 +1,27 @@
 <template>
-  <transition>
-    <div v-if="currentPassage == title" class="passageContainer">
+  <transition v-on:enter="handleEnter">
+    <div v-if="isCurrentPassage" class="passageContainer">
       <slot></slot>
     </div>
   </transition>
 </template>
 
 <script>
-import { mapState } from 'vuex';
 export default {
   name: 'Passage',
   props: [
     'title',
   ],
+  methods: {
+    handleEnter() {
+      this.$emit('enter');
+    }
+  },
   computed: {
-    ...mapState([
-      'currentPassage',
-    ]),
-  }
+    isCurrentPassage() {
+      return this.$store.state.currentPassage === this.title;
+    }
+  },
 }
 </script>
 
