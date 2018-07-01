@@ -3,10 +3,10 @@
     <Passage @enter="consoleLog('alarm going off')" title="morning-alarm">
       <p>Your alarm wakes you *beeep* *beeep* *beep*</p>
 
-      <p>You consider hitting <Hyperlink @go="consoleLog('snooze')" to="snooze">snooze</Hyperlink> or maybe  if(s.sleptInMinutes > 40) { _finally_ } [[turning off your alarm->turn off alarm]].</p>
+      <p>You consider hitting <Hyperlink @go="incrementTime(10)" to="snooze">snooze</Hyperlink> or maybe  if(s.sleptInMinutes > 40) { _finally_ } [[turning off your alarm->turn off alarm]].</p>
     </Passage>
     <Passage title="snooze">
-      <p>You turn off your alarm and look at the time <span class="clock-time am">6<i>:</i>00</span>.</p>
+      <p>You turn off your alarm and look at the time <span v-html="currentTimeFormatted" />.</p>
 
       <p>[[You get out of bed and stand up->stand up]]</p>
 
@@ -24,6 +24,16 @@ import Passage from './components/Passage.vue';
 import Hyperlink from './components/Hyperlink.vue';
 import { mapState, mapMutations } from 'vuex';
 
+function zeroFill( number, width )
+{
+  width -= number.toString().length;
+  if ( width > 0 )
+  {
+    return new Array( width + (/\./.test( number ) ? 2 : 1) ).join( '0' ) + number;
+  }
+  return number + ""; // always return a string
+}
+
 export default {
   name: 'app',
   components: {
@@ -31,14 +41,19 @@ export default {
     Hyperlink,
   },
   methods: {
-    consoleLog(msg) {
-      console.log("DID IT" + msg);
+    consoleLog() {
+      //console.log("DID IT" + msg);
     },
     ...mapMutations([
       'goToPassage',
+      'incrementTime',
     ])
   },
   computed: {
+    currentTimeFormatted() {
+      const dateTime = new Date(this.$store.state.currentTime);
+      return '<span class="clock-time ' + (dateTime.getHours() >= 13 ? "pm" : "am") + '"><span class="time-part">' + ((dateTime.getHours() - 1) % 12) + '</span><i>:</i><span class="time-part">' + zeroFill(dateTime.getMinutes(), 2) + '</span></span>';
+    },
     ...mapState([
       'currentPassage',
     ])
