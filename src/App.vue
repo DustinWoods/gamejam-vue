@@ -1,44 +1,42 @@
 <template>
   <div id="app" v-bind:class="currentPassage" class="container">
+
+
     <Passage @enter="consoleLog('alarm going off')" title="morning-alarm">
       <p>Your alarm wakes you *beeep* *beeep* *beep*</p>
 
       <p>You consider hitting <Hyperlink @go="incrementTime(10)" to="snooze">snooze</Hyperlink> or maybe  if(s.sleptInMinutes > 40) { _finally_ } [[turning off your alarm->turn off alarm]].</p>
     </Passage>
+
     <Passage title="snooze">
-      <p>You turn off your alarm and look at the time <span v-html="currentTimeFormatted" />.</p>
+      <p>You turn off your alarm and look at the time <Clock :timestamp="currentTime" />.</p>
 
       <p>[[You get out of bed and stand up->stand up]]</p>
 
       <p><Hyperlink to="deep-sleep">You drift off back to sleep...</Hyperlink></p>
     </Passage>
+
     <Passage title="deep-sleep">
       <p><Hyperlink to="morning-alarm">You dream about Vue...</Hyperlink></p>
     </Passage>
+
+    
     <div class="debug-footer">current passage: {{ currentPassage }}</div>
   </div>
 </template>
 
 <script>
-import Passage from './components/Passage.vue';
-import Hyperlink from './components/Hyperlink.vue';
+import Passage from './core-components/Passage.vue';
+import Hyperlink from './core-components/Hyperlink.vue';
+import Clock from './story-components/Clock.vue';
 import { mapState, mapMutations } from 'vuex';
-
-function zeroFill( number, width )
-{
-  width -= number.toString().length;
-  if ( width > 0 )
-  {
-    return new Array( width + (/\./.test( number ) ? 2 : 1) ).join( '0' ) + number;
-  }
-  return number + ""; // always return a string
-}
 
 export default {
   name: 'app',
   components: {
     Passage,
     Hyperlink,
+    Clock,
   },
   methods: {
     consoleLog() {
@@ -50,12 +48,9 @@ export default {
     ])
   },
   computed: {
-    currentTimeFormatted() {
-      const dateTime = new Date(this.$store.state.currentTime);
-      return '<span class="clock-time ' + (dateTime.getHours() >= 13 ? "pm" : "am") + '"><span class="time-part">' + ((dateTime.getHours() - 1) % 12) + '</span><i>:</i><span class="time-part">' + zeroFill(dateTime.getMinutes(), 2) + '</span></span>';
-    },
     ...mapState([
       'currentPassage',
+      'currentTime',
     ])
   }
 };
@@ -78,41 +73,4 @@ export default {
   font-size: 12px;
   color: #888;
 }
-
-.clock-time {
-  font-family: mono;
-  background: #270003;
-  padding: 4px 7px 4px 12px;
-  margin: 0 10px 0 5px;
-  color: #f00;
-  position: relative;
-  border-radius: 4px;
-  box-shadow: 1px -1px 0 0px #79797b, -1px 1px 0 0px #101010, -1px -1px 0 0px #101010, 1px 1px 0 0px #101010, inset 0 0 0 1px #000, inset 0 0 0 5px #121315;
-}
-
-.clock-time.pm:after {
-  content: '.';
-  line-height: 0;
-  position: absolute;
-  display: block;
-  left: 3px;
-  top: 3px;
-}
-
-@keyframes blink {
-    0%   {color: #f00;}
-    49%   {color: #f00;}
-    50%   {color: #000;}
-    99%   {color: #000;}
-}
-
-.clock-time i {
-  font-style: normal;
-}
-
-.clock-time i {
-  font-style: normal;
-  animation: 1s linear 0s infinite blink;
-}
-
 </style>
