@@ -37,9 +37,11 @@ export default {
 @keyframes fade-in {
   0% {
     opacity: 0;
+    transform: translate(0, 5px);
   }
   100% {
     opacity: 1;
+    transform: translate(0, 0px);
   }
 }
 </style>
