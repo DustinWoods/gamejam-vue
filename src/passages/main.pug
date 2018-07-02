@@ -1,48 +1,25 @@
 passage(title='morning-alarm')
   p Your alarm wakes you *beeep* *beeep* *beep*
-  p
-    | You consider hitting
-    = " "
-    hyperlink(to='snooze') snooze
-    = " "
-    | or maybe
-    = " "
-    hyperlink(to='turn-off-alarm') turning off your alarm
-    = " "
-    | .
+  p You consider hitting #[hyperlink(to='snooze') snooze] or maybe #[hyperlink(to='turn-off-alarm') turning off your alarm].
 
 passage(title='turn-off-alarm' @enter='changeAlarm(false)')
-  p
-    | You turn off your alarm and look at the time
-    clock(:timestamp='currentTime')
-    | .
-  p
-    hyperlink(to='stand-up') You get out of bed and stand up
-  p
-    hyperlink(to='deep-sleep' @go='incrementTime(60)') You drift off back to sleep...
+  p You turn off your alarm and look at the time #[clock(:timestamp='currentTime')].
+  p: hyperlink(to='stand-up') You get out of bed and stand up
+  p: hyperlink(to='deep-sleep' @go='incrementTime(60)') You drift off back to sleep...
 
 passage(title='slept-in')
-  p
-    | You wake up and look at the time
-    clock(:timestamp='currentTime')
-    | .
+  p You wake up and look at the time #[clock(:timestamp='currentTime')].
   p You slept in.
-  p
-    hyperlink(to='stand-up') You get out of bed and stand up
-  p
-    hyperlink(to='deep-sleep' @go='incrementTime(60)') You drift off back to sleep...
+  p: hyperlink(to='stand-up') You get out of bed and stand up
+  p: hyperlink(to='deep-sleep' @go='incrementTime(60)') You drift off back to sleep...
 
 passage(title='snooze')
-  p
-    | You snooze your alarm and look at the time
-    clock(:timestamp='currentTime')
-    | .
-  p
-    hyperlink(to='stand-up') You get out of bed and stand up
-  p
-    hyperlink(to='deep-sleep' @go='incrementTime(10)') You drift off back to sleep...
+  p You snooze your alarm and look at the time #[clock(:timestamp='currentTime')].
+  p: hyperlink(to='stand-up') You get out of bed and stand up
+  p: hyperlink(to='deep-sleep' @go='incrementTime(10)') You drift off back to sleep...
 
 passage(title='deep-sleep')
+  //- If the alarm was turned off and we fall asleep, then player sleeps in.
   p(v-if="alarmOn")
     hyperlink(to='morning-alarm') You dream about Vue...
   p(v-else)
@@ -53,5 +30,4 @@ passage(title='stand-up')
   p(v-if="alarmOn") Your alarm went off again while you were in the shower. This bothered you.
   p(v-else) It's a great day. All is good.
   p You go back home and get in bed. You love bed.
-  p
-    hyperlink(to='deep-sleep' @go='incrementTime(360);changeAlarm(true);restartTimeofDay();') You drift off to sleep...
+  p: hyperlink(to='deep-sleep' @go='incrementTime(360);changeAlarm(true);restartTimeofDay();') You drift off to sleep...

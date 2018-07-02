@@ -1,10 +1,8 @@
 <template lang="pug">
-
   #app.container(v-bind:class='currentPassage')
+    //- All passages are managed through main.pug
     include ./passages/main.pug
-
     .debug-footer current passage: {{ currentPassage }}
-
 </template>
 
 <script>
