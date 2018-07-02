@@ -1,5 +1,5 @@
 <template>
-  <transition v-on:enter="handleEnter">
+  <transition v-on:enter="handleEnter" v-on:leave="handleLeave">
     <div v-if="isCurrentPassage" class="passageContainer">
       <slot></slot>
     </div>
@@ -15,6 +15,9 @@ export default {
   methods: {
     handleEnter() {
       this.$emit('enter');
+    },
+    handleLeave() {
+      this.$emit('leave');
     }
   },
   computed: {

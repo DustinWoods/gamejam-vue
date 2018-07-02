@@ -1,4 +1,4 @@
-passage(@enter="consoleLog('alarm going off')" title='morning-alarm')
+passage(title='morning-alarm')
   p Your alarm wakes you *beeep* *beeep* *beep*
   p
     | You consider hitting 
@@ -13,6 +13,6 @@ passage(title='snooze')
   p
     hyperlink(to='deep-sleep') You drift off back to sleep...
 
-passage(title='deep-sleep')
+passage(@enter="playAudio()" @leave="fadeAudio()" title='deep-sleep')
   p
     hyperlink(to='morning-alarm') You dream about Vue...
