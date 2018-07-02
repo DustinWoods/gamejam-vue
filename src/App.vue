@@ -2,7 +2,7 @@
 
   #app.container(v-bind:class='currentPassage')
     include ./passages/main.pug
-  
+
     .debug-footer current passage: {{ currentPassage }}
 
 </template>
@@ -21,18 +21,18 @@ export default {
     Clock,
   },
   methods: {
-    consoleLog() {
-      //console.log("DID IT" + msg);
-    },
     ...mapMutations([
       'goToPassage',
       'incrementTime',
+      'changeAlarm',
+      'restartTimeofDay',
     ])
   },
   computed: {
     ...mapState([
       'currentPassage',
       'currentTime',
+      'alarmOn',
     ])
   }
 };
