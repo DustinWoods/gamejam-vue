@@ -1,18 +1,38 @@
 passage(@enter="consoleLog('alarm going off')" title='morning-alarm')
   p Your alarm wakes you *beeep* *beeep* *beep*
   p
-    | You consider hitting 
-    hyperlink(@go='incrementTime(10)' to='snooze') snooze
-    |  or maybe  if(s.sleptInMinutes &gt; 40) { _finally_ } turning off your alarm.
+    | You consider hitting
+    hyperlink(to='snooze') snooze
+    | or maybe
+    hyperlink(to='turn-off-alarm') turning off your alarm
+    | .
+
+passage(title='turn-off-alarm')
+  p
+    | You turn off your alarm and look at the time
+    clock(:timestamp='currentTime')
+    | .
+  p
+    hyperlink(to='stand-up') You get out of bed and stand up
+  p
+    hyperlink(to='deep-sleep' @go='incrementTime(60)') You drift off back to sleep...
 
 passage(title='snooze')
   p
-    | You turn off your alarm and look at the time 
-    clock(:timestamp='currentTime') .
-  p You get out of bed and stand up
+    | You snooze your alarm and look at the time
+    clock(:timestamp='currentTime')
+    | .
   p
-    hyperlink(to='deep-sleep') You drift off back to sleep...
+    hyperlink(to='stand-up') You get out of bed and stand up
+  p
+    hyperlink(to='deep-sleep' @go='incrementTime(10)') You drift off back to sleep...
 
 passage(title='deep-sleep')
   p
     hyperlink(to='morning-alarm') You dream about Vue...
+
+passage(title='stand-up')
+  p You stand up, and go about your day. It's a great day. All is good.
+  p You go back home and get in bed.
+  p
+    hyperlink(to='deep-sleep' @go='incrementTime(360)') You drift off to sleep...

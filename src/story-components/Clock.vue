@@ -21,7 +21,7 @@ export default {
   computed: {
     hours() {
       const dateTime = new Date(this.timestamp);
-      return ((dateTime.getHours() - 1) % 12);
+      return ((dateTime.getHours() - 1) % 12) + 1;
     },
     minutes() {
       const dateTime = new Date(this.timestamp);
