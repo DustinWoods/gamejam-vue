@@ -1,6 +1,5 @@
 <template lang="pug">
   #app.container(v-bind:class='currentPassage')
-    audio(ref="audioplayer" src="./sound/test.ogg")
     //- All passages are managed through main.pug
     include ./passages/main.pug
     .debug-footer current passage: {{ currentPassage }}
@@ -22,25 +21,27 @@ export default {
   methods: {
     playAudio(options = {}) {
       const {
+        refName,
         startPosition = null,
         loop = false,
         volume = 1,
       } = options;
-
-      this.$refs.audioplayer.volume = volume;
+      const $ref = this.$refs[refName];
+      $ref.volume = volume;
       if(startPosition !== null) {
-        this.$refs.audioplayer.currentTime = startPosition;
+        $ref.currentTime = startPosition;
       }
-      this.$refs.audioplayer.loop = loop;
-      this.$refs.audioplayer.play();
+      $ref.loop = loop;
+      setTimeout($ref.play.bind($ref), 100);
     },
     fadeAudio(options = {}) {
       const {
+        refName,
         fadeInterval = 500,
         fadeTo = 0,
         pauseOnComplete = true,
       } = options;
-
+      const $ref = this.$refs[refName];
       const fadeDelta = (lastTimeMs, fadeTo, fadeInterval, $audio) => {
         const nowMs = Date.now();
         const deltaTimeMs = nowMs - lastTimeMs;
@@ -52,7 +53,7 @@ export default {
         }
       }
     
-      fadeDelta(Date.now(), fadeTo, fadeInterval, this.$refs.audioplayer);
+      fadeDelta(Date.now(), fadeTo, fadeInterval, $ref);
     },
     ...mapMutations([
       'goToPassage',

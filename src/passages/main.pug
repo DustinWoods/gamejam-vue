@@ -1,6 +1,11 @@
-passage(title='morning-alarm')
-  p Your alarm wakes you *beeep* *beeep* *beep*
-  p You consider hitting #[hyperlink(to='snooze') snooze] or maybe #[hyperlink(to='turn-off-alarm') turning off your alarm].
+passage(title='intro')
+  p: hyperlink(to='morning-alarm') Begin...
+
+passage(title='morning-alarm' @enter="playAudio({refName: 'audioAlarm', volume: 0.4, startPosition: 0, loop: false})" @leave="fadeAudio({refName: 'audioAlarm', fadeInterval: 0})")
+  audio(ref="audioAlarm" src="./sound/alarm.ogg")
+  audio(ref="audioSwitch" src="./sound/switch.ogg")
+  p Your alarm wakes you.
+  p You consider hitting #[hyperlink(to='snooze' @go="playAudio({refName: 'audioSwitch', volume: 0.4, startPosition: 0, loop: false})") snooze] or maybe #[hyperlink(to='turn-off-alarm' @go="playAudio({refName: 'audioSwitch', startPosition: 0, loop: false})") turning off your alarm].
 
 passage(title='turn-off-alarm' @enter='changeAlarm(false)')
   p You turn off your alarm and look at the time #[clock(:timestamp='currentTime')].
@@ -18,8 +23,9 @@ passage(title='snooze')
   p: hyperlink(to='stand-up') You get out of bed and stand up
   p: hyperlink(to='deep-sleep' @go='incrementTime(10)') You drift off back to sleep...
 
-passage(title='deep-sleep' @enter="playAudio({loop: true})" @leave="fadeAudio()")
+passage(title='deep-sleep' @enter="playAudio({refName: 'audioDream', volume: 0.3, loop: true})" @leave="fadeAudio({refName: 'audioDream'})")
   //- If the alarm was turned off and we fall asleep, then player sleeps in.
+  audio(ref="audioDream" src="./sound/dream.ogg")
   p(v-if="alarmOn")
     hyperlink(to='morning-alarm') You dream about Vue...
   p(v-else)

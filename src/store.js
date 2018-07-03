@@ -5,7 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
 	state: {
-    currentPassage: 'morning-alarm',
+    currentPassage: 'intro',
 		currentTime: (new Date('01/01/2018 06:00')).getTime(),
 		alarmOn: true,
 	},
