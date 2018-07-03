@@ -20,22 +20,39 @@ export default {
     Clock,
   },
   methods: {
-    playAudio() {
-        var music = this.$refs.audioplayer;
-        music.volume = 1;
-        if(music.paused){
-            music.play();
-        }else{
-            music.pause();
-        }
-    },
-    fadeAudio() {
+    playAudio(options = {}) {
+      const {
+        startPosition = null,
+        loop = false,
+        volume = 1,
+      } = options;
 
+      this.$refs.audioplayer.volume = volume;
+      if(startPosition !== null) {
+        this.$refs.audioplayer.currentTime = startPosition;
+      }
+      this.$refs.audioplayer.loop = loop;
+      this.$refs.audioplayer.play();
     },
-    stopAudio() {
-        var music = this.$refs.audioplayer;
-        music.pause();
-        music.currentTime = 0;
+    fadeAudio(options = {}) {
+      const {
+        fadeInterval = 500,
+        fadeTo = 0,
+        pauseOnComplete = true,
+      } = options;
+
+      const fadeDelta = (lastTimeMs, fadeTo, fadeInterval, $audio) => {
+        const nowMs = Date.now();
+        const deltaTimeMs = nowMs - lastTimeMs;
+        $audio.volume -= Math.min(deltaTimeMs / fadeInterval, $audio.volume - fadeTo);
+        if($audio.volume > fadeTo) {
+          setTimeout(fadeDelta.bind(null, nowMs, fadeTo, fadeInterval, $audio), 100);
+        } else if(pauseOnComplete) {
+          $audio.pause();
+        }
+      }
+    
+      fadeDelta(Date.now(), fadeTo, fadeInterval, this.$refs.audioplayer);
     },
     ...mapMutations([
       'goToPassage',

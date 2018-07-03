@@ -18,7 +18,7 @@ passage(title='snooze')
   p: hyperlink(to='stand-up') You get out of bed and stand up
   p: hyperlink(to='deep-sleep' @go='incrementTime(10)') You drift off back to sleep...
 
-passage(title='deep-sleep' @enter="playAudio()" @leave="fadeAudio()")
+passage(title='deep-sleep' @enter="playAudio({loop: true})" @leave="fadeAudio()")
   //- If the alarm was turned off and we fall asleep, then player sleeps in.
   p(v-if="alarmOn")
     hyperlink(to='morning-alarm') You dream about Vue...
