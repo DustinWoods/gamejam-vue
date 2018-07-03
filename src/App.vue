@@ -1,17 +1,14 @@
 <template lang="pug">
-
   #app.container(v-bind:class='currentPassage')
     audio(ref="audioplayer" src="./sound/test.ogg")
+    //- All passages are managed through main.pug
     include ./passages/main.pug
-  
     .debug-footer current passage: {{ currentPassage }}
-
 </template>
 
 <script>
 import Passage from './core-components/Passage.vue';
 import Hyperlink from './core-components/Hyperlink.vue';
-import TWEEN from '@tweenjs/tween.js';
 import Clock from './story-components/Clock.vue';
 import { mapState, mapMutations } from 'vuex';
 
@@ -23,9 +20,6 @@ export default {
     Clock,
   },
   methods: {
-    consoleLog() {
-      //console.log("DID IT" + msg);
-    },
     playAudio() {
         var music = this.$refs.audioplayer;
         music.volume = 1;
@@ -36,25 +30,7 @@ export default {
         }
     },
     fadeAudio() {
-      let frameHandler
 
-      // Handles updating the tween on each frame.
-      const animate = function (currentTime) {
-        TWEEN.update(currentTime)
-        frameHandler = requestAnimationFrame(animate)
-      }
-            
-      new TWEEN.Tween({v: 1}).to({v: 0}, 400)
-        .onUpdate(({v}) => {
-          this.$refs.audioplayer.volume = v;
-        })
-        .onComplete(() => {
-          this.stopAudio();
-          cancelAnimationFrame(frameHandler);
-        })
-        .start();
-
-      frameHandler = requestAnimationFrame(animate);
     },
     stopAudio() {
         var music = this.$refs.audioplayer;
@@ -64,12 +40,15 @@ export default {
     ...mapMutations([
       'goToPassage',
       'incrementTime',
+      'changeAlarm',
+      'restartTimeofDay',
     ])
   },
   computed: {
     ...mapState([
       'currentPassage',
       'currentTime',
+      'alarmOn',
     ])
   }
 };
