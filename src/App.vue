@@ -9,7 +9,8 @@
 import Passage from './core-components/Passage.vue';
 import Hyperlink from './core-components/Hyperlink.vue';
 import Clock from './story-components/Clock.vue';
-import { mapState, mapMutations } from 'vuex';
+import { mappedMutations, mappedGetters, mappedActions } from './store';
+import audioTools from './libs/audio-toolds';
 
 export default {
   name: 'app',
@@ -19,56 +20,13 @@ export default {
     Clock,
   },
   methods: {
-    playAudio(options = {}) {
-      const {
-        refName,
-        startPosition = null,
-        loop = false,
-        volume = 1,
-      } = options;
-      const $ref = this.$refs[refName];
-      $ref.volume = volume;
-      if(startPosition !== null) {
-        $ref.currentTime = startPosition;
-      }
-      $ref.loop = loop;
-      setTimeout($ref.play.bind($ref), 100);
-    },
-    fadeAudio(options = {}) {
-      const {
-        refName,
-        fadeInterval = 500,
-        fadeTo = 0,
-        pauseOnComplete = true,
-      } = options;
-      const $ref = this.$refs[refName];
-      const fadeDelta = (lastTimeMs, fadeTo, fadeInterval, $audio) => {
-        const nowMs = Date.now();
-        const deltaTimeMs = nowMs - lastTimeMs;
-        $audio.volume -= Math.min(deltaTimeMs / fadeInterval, $audio.volume - fadeTo);
-        if($audio.volume > fadeTo) {
-          setTimeout(fadeDelta.bind(null, nowMs, fadeTo, fadeInterval, $audio), 100);
-        } else if(pauseOnComplete) {
-          $audio.pause();
-        }
-      }
-    
-      fadeDelta(Date.now(), fadeTo, fadeInterval, $ref);
-    },
-    ...mapMutations([
-      'goToPassage',
-      'incrementTime',
-      'changeAlarm',
-      'restartTimeofDay',
-    ])
+    ...audioTools,
+    ...mappedMutations,
+    ...mappedActions,
   },
   computed: {
-    ...mapState([
-      'currentPassage',
-      'currentTime',
-      'alarmOn',
-    ])
-  }
+    ...mappedGetters,
+  },
 };
 </script>
 
