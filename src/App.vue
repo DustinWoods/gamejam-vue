@@ -6,19 +6,11 @@
 </template>
 
 <script>
-import Passage from './core-components/Passage.vue';
-import Hyperlink from './core-components/Hyperlink.vue';
-import Clock from './story-components/Clock.vue';
 import { mappedMutations, mappedGetters, mappedActions } from './store';
-import audioTools from './libs/audio-toolds';
+import audioTools from './libs/audio-tools';
 
 export default {
   name: 'app',
-  components: {
-    Passage,
-    Hyperlink,
-    Clock,
-  },
   methods: {
     ...audioTools,
     ...mappedMutations,
