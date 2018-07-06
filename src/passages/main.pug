@@ -1,5 +1,5 @@
-passage(title='intro')
-  p: hyperlink(to='morning-alarm') Begin...
+//- Example of including anohter file
+include ./intro.pug
 
 passage(title='morning-alarm' @enter="playAudio({refName: 'audioAlarm', volume: 0.4, startPosition: 0, loop: false})" @leave="fadeAudio({refName: 'audioAlarm', fadeInterval: 0})")
   audio(ref="audioAlarm" src="./sound/alarm.ogg")
