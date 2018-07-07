@@ -7,23 +7,36 @@
 </template>
 
 <script>
+import { mappedGetters } from '../../store';
+import { isPassageSatisfied } from '../../libs/utils';
+
 export default {
   name: 'Passage',
-  props: [
-    'title',
-  ],
+  props: {
+    title: {
+      default: '',
+      type: String,
+    },
+    sequence: {
+      default: 0,
+      type: Number,
+    }
+  },
   methods: {
     handleEnter() {
       this.$emit('enter');
     },
     handleLeave() {
       this.$emit('leave');
-    }
+    },
   },
   computed: {
     isCurrentPassage() {
-      return this.$store.state.currentPassage === this.title;
-    }
+      const titleSatisfy = this.title ? isPassageSatisfied( this.title, this.currentPassage ) : true;
+      const sequenceSatisfy = this.currentPassageSequence >= this.sequence;
+      return titleSatisfy && sequenceSatisfy;
+    },
+    ...mappedGetters,
   },
 }
 </script>

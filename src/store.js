@@ -5,12 +5,30 @@ Vue.use(Vuex);
 
 const state = {
 	currentPassage: 'intro',
+	currentPassageSequence: 0,
 	currentTime: (new Date('01/01/2018 06:00')).getTime(),
 	alarmOn: true,
 };
 
 const mutations = {
 	goToPassage (state, newPassage) {
+		const [, incrementDirection, incrementAmount] = newPassage.match(/^([+-]?)([0-9]+)$/) || ['','',''];
+		if(incrementAmount) {
+			switch (incrementDirection) {
+				case '+':
+					state.currentPassageSequence += parseInt(incrementAmount);
+					break;
+				case '-':
+					state.currentPassageSequence += parseInt(incrementAmount);					
+					break;
+				case '':
+				default:
+					state.currentPassageSequence = parseInt(incrementAmount);
+					break;
+			}
+			return;
+		}
+		state.currentPassageSequence = 0;
 		state.currentPassage = newPassage;
 	},
 	incrementTime (state, minutes) {
