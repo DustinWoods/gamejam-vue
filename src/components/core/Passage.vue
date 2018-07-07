@@ -28,7 +28,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .passageContainer {
   &.v-enter-active {
     animation: fade-in 400ms;

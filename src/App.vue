@@ -7,12 +7,12 @@
 
 <script>
 import { mappedMutations, mappedGetters, mappedActions } from './store';
-import audioTools from './libs/audio-tools';
+//import audioTools from './libs/audio-tools';
 
 export default {
   name: 'app',
   methods: {
-    ...audioTools,
+    //...audioTools,
     ...mappedMutations,
     ...mappedActions,
   },

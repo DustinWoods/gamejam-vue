@@ -1,9 +1,8 @@
 //- Example of including anohter file
 include ./intro.pug
+include ./audio-test.pug
 
 passage(title='morning-alarm' @enter="playAudio({refName: 'audioAlarm', volume: 0.4, startPosition: 0, loop: false})" @leave="fadeAudio({refName: 'audioAlarm', fadeInterval: 0})")
-  audio(ref="audioAlarm" src="./assets/sound/alarm.ogg")
-  audio(ref="audioSwitch" src="./assets/sound/switch.ogg")
   p Your alarm kills you.
   p You consider hitting #[hyperlink(to='snooze' @go="playAudio({refName: 'audioSwitch', volume: 0.4, startPosition: 0, loop: false})") snooze] or maybe #[hyperlink(to='turn-off-alarm' @go="playAudio({refName: 'audioSwitch', startPosition: 0, loop: false})") turning off your alarm].
 
