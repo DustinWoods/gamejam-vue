@@ -20,7 +20,20 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+
+body {
+  overflow: hidden;
+}
+
+.passage-box {
+  background-color: #fffc;
+  padding: 30px;
+  width: 33%;
+  min-width: 600px;
+  margin: auto;
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
