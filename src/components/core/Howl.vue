@@ -35,6 +35,10 @@ const howlEvents = [
 export default {
   name: 'Howl',
   props: {
+    single: {
+      type: Boolean,
+      default: true,
+    },
     file: {
       type: String,
       default: '',
@@ -77,6 +81,7 @@ export default {
   },
   methods: {
     play() {
+      if(this.single && this.sound.playing()) return;
       this.sound.play();
     },
     pause() {
@@ -87,6 +92,14 @@ export default {
     },
     fade(from, to, duration = 500) {
       this.sound.fade(from, to, duration);
+    },
+    fadeOut(duration = 500) {
+      this.sound.fade(this.sound.volume(), 0, duration);
+      this.sound.once('fade', this.stop);
+    },
+    fadeIn(duration = 500, to = 1) {
+      this.play();
+      this.sound.fade(0, to, duration);
     },
     state() {
       return this.sound.state();

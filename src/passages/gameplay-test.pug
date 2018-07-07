@@ -1,5 +1,6 @@
-passage(title='gameplay-test')
+passage(title='gameplay-test' @enter="$refs.soundDream.fadeIn()" @leave="$refs.soundDream.fadeOut()")
   backdrop(file='test-cinemagraph.mp4' type='video' color='white')
+  howl(file='dream.ogg' loop=true ref='soundDream')
   div.passage-box
     p This is a test box
 

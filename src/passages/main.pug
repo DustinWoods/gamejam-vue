@@ -27,7 +27,6 @@ passage(title='snooze')
 
 passage(title='deep-sleep' @enter="$refs.soundDream.play()" @leave="$refs.soundDream.stop()")
   //- If the alarm was turned off and we fall asleep, then player sleeps in.
-  howl(file='dream.ogg' loop=true ref='soundDream')
   p(v-if="alarmOn")
     hyperlink(to='morning-alarm') You dream about Vue...
   p(v-else)
