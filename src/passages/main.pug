@@ -1,6 +1,7 @@
 //- Example of including anohter file
 include ./intro.pug
 include ./audio-test.pug
+include ./gameplay-test.pug
 
 passage(title='morning-alarm' @enter="$refs.soundAlarm.play()" @leave="$refs.soundAlarm.stop()")
   howl(file='alarm.ogg' loop=true ref='soundAlarm')
