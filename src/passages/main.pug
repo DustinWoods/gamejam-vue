@@ -25,7 +25,6 @@ passage(title='snooze')
 
 passage(title='deep-sleep' @enter="playAudio({refName: 'audioDream', volume: 0.3, loop: true})" @leave="fadeAudio({refName: 'audioDream'})")
   //- If the alarm was turned off and we fall asleep, then player sleeps in.
-  audio(ref="audioDream" src="./assets/sound/dream.ogg")
   p(v-if="alarmOn")
     hyperlink(to='morning-alarm') You dream about Vue...
   p(v-else)
