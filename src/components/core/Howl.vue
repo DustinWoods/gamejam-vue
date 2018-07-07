@@ -10,6 +10,9 @@ export default {
   name: 'Howl',
   props: [
     'file',
+    'volume',
+    'loop',
+    'autoplay',
   ],
   created: function() {
     this.resolvedFile = require('../../assets/sound/' + this.file);
