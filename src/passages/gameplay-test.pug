@@ -4,12 +4,12 @@ passage(title='gameplay-test' @enter="$refs.soundDream.fadeIn()" @leave="$refs.s
   div.passage-box
     p This is a test box
 
-    passage(sequence=1)
+    passage(sequence=1 @enter="$refs.soundDream.fadeOut()")
       p Passage A
-    passage(sequence=2)
+    passage(sequence=2 @enter="$refs.soundDream.fadeIn()" @leave="$refs.soundDream.fadeOut()")
       p B Passage
     passage(sequence=3)
       p C Passage
-
+      
     p: hyperlink(to='+1' v-if='currentPassageSequence < 3') Next
     p: hyperlink(to='intro' v-if='currentPassageSequence >= 3') Next

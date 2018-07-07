@@ -82,7 +82,11 @@ export default {
   methods: {
     play() {
       if(this.single && this.sound.playing()) return;
-      this.sound.play();
+      if(this.single && this.soundId) {
+        this.sound.play(this.soundId);
+        return;
+      }
+      this.soundId = this.sound.play();
     },
     pause() {
       this.sound.pause();
@@ -93,9 +97,13 @@ export default {
     fade(from, to, duration = 500) {
       this.sound.fade(from, to, duration);
     },
-    fadeOut(duration = 500) {
+    fadeOut(duration = 500, resetPosition = false) {
       this.sound.fade(this.sound.volume(), 0, duration);
-      this.sound.once('fade', this.stop);
+      if(resetPosition) {
+        this.sound.once('fade', this.stop);
+      } else {
+        this.sound.once('fade', this.pause);
+      }
     },
     fadeIn(duration = 500, to = 1) {
       this.play();
@@ -127,7 +135,7 @@ export default {
         this.sound.on(eventName, this.$emit.bind(this, eventName, this.sound));
       });
     };
-    
+    this.soundId = null;
     this.createHowl(this.resolvedFile); 
   },
   computed: {
