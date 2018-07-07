@@ -1,38 +1,35 @@
+import { Howl } from 'howler';
+
+const howls = {
+  audioAlarm: new Howl({
+    src: [require('../assets/sound/alarm.ogg')],
+  }),
+  audioSwitch: new Howl({
+    src: [require('../assets/sound/switch.ogg')],
+  }),
+  audioDream: new Howl({
+    src: [require('../assets/sound/dream.ogg')],
+  }),
+};
+
 export default {
   playAudio(options = {}) {
     const {
       refName,
-      startPosition = null,
-      loop = false,
-      volume = 1,
+      //startPosition = null,
+      //loop = false,
+      //volume = 1,
     } = options;
-    const $ref = this.$refs[refName];
-    $ref.volume = volume;
-    if(startPosition !== null) {
-      $ref.currentTime = startPosition;
-    }
-    $ref.loop = loop;
-    setTimeout($ref.play.bind($ref), 100);
+    howls[refName].play();
   },
   fadeAudio(options = {}) {
     const {
       refName,
       fadeInterval = 500,
       fadeTo = 0,
-      pauseOnComplete = true,
+      //pauseOnComplete = true,
     } = options;
-    const $ref = this.$refs[refName];
-    const fadeDelta = (lastTimeMs, fadeTo, fadeInterval, $audio) => {
-      const nowMs = Date.now();
-      const deltaTimeMs = nowMs - lastTimeMs;
-      $audio.volume -= Math.min(deltaTimeMs / fadeInterval, $audio.volume - fadeTo);
-      if($audio.volume > fadeTo) {
-        setTimeout(fadeDelta.bind(null, nowMs, fadeTo, fadeInterval, $audio), 100);
-      } else if(pauseOnComplete) {
-        $audio.pause();
-      }
-    }
 
-    fadeDelta(Date.now(), fadeTo, fadeInterval, $ref);
+    howls[refName].fade(1, fadeTo, fadeInterval);
   },
 };
