@@ -1,25 +1,35 @@
-passage(title='drifting-off' @enter='goToPassage("drifting-off/first")')
-  .passage-box
-    passage(title='drifting-off/first')
-      p
-        | I am thinking about
-        | #[passage(inline sequence=1)  something]
-        | #[passage(inline sequence=2)  important]
-        | #[hyperlink(to='+1' v-if='currentPassageSequence < 2') …]
-        | #[hyperlink(to='drifting-off/second' v-else) …]
-    passage(title='drifting-off/second')
-      p
-        | I am wanting to do
-        | #[passage(inline sequence=1)  something]
-        | #[passage(inline sequence=2)  terrible]
-        | #[hyperlink(to='+1' v-if='currentPassageSequence <= 2') …]
 
-      p(v-if='currentPassageSequence > 2')
-        | Like
-        | #[passage(inline sequence=4)  something]
-        | #[passage(inline sequence=5)  big]
-        | #[hyperlink(to='+1' v-if='currentPassageSequence < 5') …]
-        | #[hyperlink(to='drifting-off/third' v-else) …]
+backdrop(title='drifting-off' file='test-cinemagraph.mp4' type='video' color='white')
+transition(name='fall-asleep' v-on:after-enter='goToPassage("sleeping-1")')
+  passage(title='drifting-off' @enter='goToPassage("drifting-off/first")')
+    .passage-box
+      p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam posuere arcu ac lorem venenatis, vitae finibus nisi tempus. Nullam ac orci id elit gravida viverra nec id sapien. Sed vitae lectus cursus, dictum lorem at, sodales neque. Etiam lorem diam, laoreet in laoreet eu, tincidunt ut velit. Praesent vitae feugiat metus. Fusce viverra sagittis lobortis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin feugiat tristique lorem, ut venenatis neque maximus id. Pellentesque sed mattis risus. Donec justo leo, cursus nec turpis eget, volutpat cursus dolor. Morbi varius non urna eu accumsan. Nullam et ante id tortor sollicitudin mattis. Cras tincidunt, risus non tempus lacinia, lacus metus laoreet turpis, sit amet dapibus nibh dui ac ex. Curabitur consequat risus ligula, non dapibus mi eleifend vel. 
+      p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam posuere arcu ac lorem venenatis, vitae finibus nisi tempus. Nullam ac orci id elit gravida viverra nec id sapien. Sed vitae lectus cursus, dictum lorem at, sodales neque. Etiam lorem diam, laoreet in laoreet eu, tincidunt ut velit. Praesent vitae feugiat metus. Fusce viverra sagittis lobortis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin feugiat tristique lorem, ut venenatis neque maximus id. Pellentesque sed mattis risus. Donec justo leo, cursus nec turpis eget, volutpat cursus dolor. Morbi varius non urna eu accumsan. Nullam et ante id tortor sollicitudin mattis. Cras tincidunt, risus non tempus lacinia, lacus metus laoreet turpis, sit amet dapibus nibh dui ac ex. Curabitur consequat risus ligula, non dapibus mi eleifend vel. 
+      
+      //- passage(title='drifting-off/first')
+      //-   p
+      //-     | I am thinking about
+      //-     | #[passage(inline sequence=1)  something]
+      //-     | #[passage(inline sequence=2)  important]
+      //-     | #[hyperlink(to='+1' v-if='currentPassageSequence < 2') …]
+      //-     | #[hyperlink(to='drifting-off/second' v-else) …]
 
-    passage(title='drifting-off/third')
-      p silence
+      //- passage(title='drifting-off/second')
+      //-   p
+      //-     | I am wanting to do
+      //-     | #[passage(inline sequence=1)  something]
+      //-     | #[passage(inline sequence=2)  terrible]
+      //-     | #[hyperlink(to='+1' v-if='currentPassageSequence <= 2') …]
+
+      //-   p(v-if='currentPassageSequence > 2')
+      //-     | Like
+      //-     | #[passage(inline sequence=4)  something]
+      //-     | #[passage(inline sequence=5)  big]
+      //-     | #[hyperlink(to='+1' v-if='currentPassageSequence < 5') …]
+      //-     | #[hyperlink(to='drifting-off/third' v-else) …]
+
+      //- passage(title='drifting-off/third')
+      //-   p silence
+passage(title='sleeping-1')
+  p you are asleep
+  hyperlink(to='drifting-off') Again again!

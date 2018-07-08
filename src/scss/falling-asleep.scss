@@ -1,0 +1,25 @@
+
+.fall-asleep-enter-active {
+  animation: fade-to-blur 5s;
+  animation-delay: 1s;
+  animation-timing-function: cubic-bezier(1.000, 0.005, 0.470, 0.780);
+}
+
+@keyframes fade-to-blur {
+  0% {
+    opacity: 1;
+    filter: blur(0);
+    transform: scaleX(1) scaleY(1);
+  }
+  45% {
+    transform: scaleX(1) scaleY(1);
+  }
+  50% {
+    opacity: 0;
+    filter: blur(4px);
+    transform: scaleX(0.8) scaleY(0.5);
+  }
+  100% {
+    opacity: 0;
+  }
+}
