@@ -7,6 +7,7 @@ const state = {
 	passageHistory: [],
 	currentPassage: 'intro',
 	currentPassageSequence: 0,
+	actionsCount: 0,
 	currentTime: (new Date('01/01/2018 06:00')).getTime(),
 	alarmOn: true,
 };
@@ -33,18 +34,13 @@ const mutations = {
 		state.passageHistory = [state.currentPassage, ...state.passageHistory];
 		state.currentPassage = newPassage;
 	},
-	resetPassageHistory (state) {
+	resetGameState (state) {
 		state.passageHistory = [];
+		state.actionsCount = 0;
 	},
-	incrementTime (state, minutes) {
-		state.currentTime += minutes * 1000 * 60;
+	incrementActionsCount(state) {
+		state.actionsCount += 1;
 	},
-	restartTimeofDay (state) {
-		state.currentTime = (new Date('01/01/2018 06:00')).getTime();
-	},
-	changeAlarm (state, newState) {
-		state.alarmOn = newState;
-	}
 };
 
 const actions = {};
