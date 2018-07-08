@@ -1,6 +1,4 @@
-$sleep-transition-time: 3s;
-$sleep-transition-delay: 5s;
-
+@import './variables.scss';
 @import './falling-asleep.scss';
 
 body {

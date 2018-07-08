@@ -20,7 +20,7 @@
   }
 }
 
-.fall-asleep, .fall-asleep-enter-active {
+.fall-asleep-enter-active {
   animation: fade-to-blur $sleep-transition-time;
   animation-delay: $sleep-transition-delay;
   animation-timing-function: cubic-bezier(1.000, 0.005, 0.470, 0.780);
