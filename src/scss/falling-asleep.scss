@@ -11,7 +11,7 @@
     filter: grayscale(0) blur(0);
     opacity: 1;
   }
-  50% {
+  80% {
     filter: grayscale(1) blur(2px);
     opacity: 0;
   }
@@ -20,7 +20,7 @@
   }
 }
 
-.fall-asleep-enter-active {
+.fall-asleep, .fall-asleep-enter-active {
   animation: fade-to-blur $sleep-transition-time;
   animation-delay: $sleep-transition-delay;
   animation-timing-function: cubic-bezier(1.000, 0.005, 0.470, 0.780);
@@ -33,10 +33,10 @@
     filter: blur(0);
     transform: scaleX(1) scaleY(1);
   }
-  45% {
+  75% {
     transform: scaleX(1) scaleY(1);
   }
-  50% {
+  80% {
     opacity: 0;
     filter: blur(4px);
     transform: scaleX(1.8) scaleY(1.5);
