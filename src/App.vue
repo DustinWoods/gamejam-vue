@@ -37,6 +37,7 @@ body {
 
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  user-select: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
