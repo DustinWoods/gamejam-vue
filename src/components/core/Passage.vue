@@ -1,6 +1,6 @@
 <template lang='pug'>
   transition(v-on:enter='handleEnter' v-on:leave='handleLeave')
-    div(v-if='isCurrentPassage' class='passageContainer')
+    div(v-if='isCurrentPassage' class='passageContainer' v-bind:class='{inline}')
       slot
 </template>
 
@@ -18,6 +18,10 @@ export default {
     sequence: {
       default: 0,
       type: Number,
+    },
+    inline: {
+      default: false,
+      type: Boolean,
     }
   },
   methods: {
@@ -41,6 +45,9 @@ export default {
 
 <style lang="scss" scoped>
 .passageContainer {
+  .inline {
+    display: inline;
+  }
   &.v-enter-active {
     animation: fade-in 400ms;
   }
