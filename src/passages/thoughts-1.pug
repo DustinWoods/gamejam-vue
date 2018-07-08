@@ -1,0 +1,21 @@
+passage(title="thoughts-1")
+  div.passage-box
+    p hello world
+
+
+    passage(sequence=1)
+      p You: Fuck, that was stupid
+    passage(sequence=2)
+      p Hitchhiker: Don't be so rough on yourself (sound stops)
+    passage(sequence=3)
+      p *Awkward pause*
+    passage(sequence=4)
+      p: hyperlink(to='thoughts-1-b') #[i I hope I don't fall asleep]
+    
+    p: hyperlink(to='+1') Next
+    p: hyperlink(to='0') Restart
+
+passage(title="thoughts-1-b")
+  div.passage-box
+    p More conversation...
+    p: hyperlink(to='thoughts-1') Go back
