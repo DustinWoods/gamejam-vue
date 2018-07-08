@@ -10,3 +10,7 @@ include ./thoughts-1.pug
 include ./drifting-off-test.pug
 
 backdrop(title='driving' type='color' color='#002')
+
+backdrop(title='deep-sleep' type='color' color='#000')
+passage(title='deep-sleep' @enter='goToPassage("intro")')
+  p

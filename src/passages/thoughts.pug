@@ -45,15 +45,16 @@ passage(title='driving/thoughts/idle/pullover')
     p Sleeping on the side of the road?
     p: hyperlink(to='driving/choices') I wonder if it's safe.
 
-passage(title='driving/thoughts/idle/final')
-  .passage-box.thoughts
-    p Am I pushing my luck?
-    p How many times before I just pull over?
-    p It's okay.
-    p I got this.
-    p I totally got this.
-    p Tot-a-lly got it.
-    p Peice-o-cake.
+transition(name='fall-asleep' v-on:after-enter='goToPassage("deep-sleep")')
+  passage(title='driving/thoughts/idle/final')
+    .passage-box.thoughts
+      p Am I pushing my luck?
+      p How many times before I just pull over?
+      p It's okay.
+      p I got this.
+      p I totally got this.
+      p Tot-a-lly got it.
+      p Peice-o-cake.
 
 transition(name='fall-asleep' v-on:after-enter='goToPassage("driving/thoughts/idle/denial")')
   passage(title='driving/thoughts/action/posture')

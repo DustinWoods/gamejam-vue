@@ -2,7 +2,8 @@ passage(title='driving/choices')
   .passage-box.choices
     p I just need to...
 
-    p: hyperlink(to='driving/actions/situp' notAgain="true") Sit up straight.
-    p: hyperlink(to='driving/actions/coffee' notAgain="true") Drink some coffee.
-    p: hyperlink(to='driving/actions/radio' notAgain="true") Turn on the radio.
+    p: hyperlink(to='driving/actions/situp' notAgain="true" @go='incrementActionsCount') Sit up straight.
+    p: hyperlink(to='driving/actions/coffee' notAgain="true" @go='incrementActionsCount') Drink some coffee.
+    p: hyperlink(to='driving/actions/radio' notAgain="true" @go='incrementActionsCount') Turn on the radio.
+    p(v-if='actionsCount >= 0'): hyperlink(to='driving/thoughts/idle/final') Shake it off.
     
