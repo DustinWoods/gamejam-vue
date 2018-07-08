@@ -1,9 +1,7 @@
-<template>
-  <transition v-on:enter="handleEnter" v-on:leave="handleLeave">
-    <div v-if="isCurrentPassage" class="passageContainer">
-      <slot></slot>
-    </div>
-  </transition>
+<template lang='pug'>
+  transition(v-on:enter='handleEnter' v-on:leave='handleLeave')
+    div(v-if='isCurrentPassage' class='passageContainer')
+      slot
 </template>
 
 <script>
