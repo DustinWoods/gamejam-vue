@@ -16,6 +16,7 @@ export default {
     ...mappedActions,
     ...mappedMutations,
     clickLink() {
+      if(disabled) return;
       this.$emit('go', this.to);
       this.goToPassage(this.to);
     },
