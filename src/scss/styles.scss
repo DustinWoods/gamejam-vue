@@ -1,3 +1,6 @@
+$sleep-transition-time: 5s;
+$sleep-transition-delay: 0s;
+
 @import './falling-asleep.scss';
 
 body {
@@ -6,11 +9,14 @@ body {
 }
 
 .passage-box {
+  color: #2c3e50;
   background-color: #fffc;
   padding: 30px;
   width: 33%;
   min-width: 600px;
   margin: auto;
+  position: relative;
+  z-index: 100;
 }
 
 #app {
@@ -19,7 +25,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #a6b4c2;
   margin-top: 60px;
 }
 
