@@ -1,75 +1,49 @@
-passage(title='driving/thoughts/idle/surroundings')
-  .passage-box.thoughts
-    p I'm so tired.
-    p It's been a long day.
-    p This car is dirty.
-    p This seat is warm.
-    p There's a glare on the windshield.
-    p It's quiet.
-    p It's nice to have time to myself.
-    p: hyperlink(to='driving/choices') I need to stay awake.
-
-passage(title='driving/thoughts/idle/denial')
-  .passage-box.thoughts
-    p Whew, am I starting to drift off?
-    p It's not even that late.
-    p I'm zoning out, that's why I feel this way.
-    p Gotta keep myself entertained or something.
-    p It's all good.
-    p: hyperlink(to='driving/choices') I got this.
-  
-passage(title='driving/thoughts/idle/noise')
-  .passage-box.thoughts
-    p I need to shake this off.
-    p Something to focus on.
-    p I never feel this way if someone is with me.
-    p Maybe if I talk to myself.
-    p Noise might help.
-    p: hyperlink(to='driving/choices') I got this.
-
-passage(title='driving/thoughts/idle/air')
-  .passage-box.thoughts
-    p Shit, this isn't good.
-    p How much time has passed?
-    p It was just a split second.
-    p Just breath.
-    p Deep breaths.
-    p The air should wake me up.
-    p: hyperlink(to='driving/choices') I got this.
-
-passage(title='driving/thoughts/idle/pullover')
-  .passage-box.thoughts
-    p I can always pull over.
-    p That is always an option.
-    p What would that be like?
-    p Sleeping on the side of the road?
-    p: hyperlink(to='driving/choices') I wonder if it's safe.
-
 passage(title='driving/thoughts/idle/final' sleepAfter=500 @leave='goToPassage("deep-sleep")')
   .passage-box.thoughts
-    p Am I pushing my luck?
-    p How many times before I just pull over?
-    p It's okay.
-    p I got this.
-    p I totally got this.
-    p Tot-a-lly got it.
-    p Peice-o-cake.
+    p I bet I'm not the only one this tired.
+    p It's not a big deal.
+    p Next time though, I won't commit to so much.
+    p I need to learn to say now sometimes.
+    p But it's okay, she's important to me.
+    p I bet she'd tell me to pull over.
+    p I love the way she voices her opinions.
+    p She's a leader type I think.
+    p I'd imagine she could make a career out it.
+    p I could picture her.
+    p Walking into a board room.
+    p With that smile.
+    p The way she lights a room.
+    p It takes my breath away.
+    //- Drift off to sleep finally
 
-passage(title='driving/thoughts/action/posture' sleepAfter=500 @leave='goToPassage("driving/thoughts/idle/denial")')
+passage(title='driving/thoughts/action/coffee' sleepAfter=500 @leave='goToPassage("driving/thoughts/idle/denial")')
   .passage-box.thoughts
-    //- Pause
-    p I need to sit like this more often.
-    p I've never had great posture.
-    p It's probably from being raised by video games.
-    p I should do more yoga.
-    p I feel weird about doing yoga.
-    p It's supposed to be meditative.
-    p You're supposed to clear your mind.
-    p It's probably easier than I'm making it.
-    p I guess I'm supposed to just think about nothing.
+    p I wonder how much of coffee is a placebo?
+    p I've defintely fallen asleep after drinking coffee.
+    p It probably helps in some way though.
+    p Why would so many people use it if it didn't help?
+    p It is a stimulant, right?
+    p "Stimulant" sounds like a thing that's supposed to keep you awake.
+    p But maybe it doesn't work on me.
+    p I've read that the body produces melatonin naturally.
+    p That's how people get tired.
     //- Drift off to sleep
 
-passage(title='driving/thoughts/action/radio' sleepAfter=500 @leave='goToPassage("driving/thoughts/idle/noise")')
+passage(title='driving/thoughts/action/window' sleepAfter=500 @leave='goToPassage("driving/thoughts/idle/noise")')
+  .passage-box.thoughts
+    p The cool air reminds me of the beach.
+    p My Dad would always open his window when he was tired.
+    p It seemed to work for him.
+    p My Dad also loved the beach.
+    p The cool air there is refreshing.
+    p I love the white noise of the ocean waves.
+    p It feels like not much else matters there.
+    p That might be why so many people there don't work.
+    p I don't judge them though.
+    p One day none of us should have to work.
+    //- Drift off to sleep
+
+passage(title='driving/thoughts/action/radio' sleepAfter=500 @leave='goToPassage("driving/thoughts/idle/air")')
   .passage-box.thoughts
     p Pop music is all the same.
     p I wish more people appreciated underated art.
@@ -82,16 +56,29 @@ passage(title='driving/thoughts/action/radio' sleepAfter=500 @leave='goToPassage
     p No no, it was something to do with the value of art.
     //- Drift off to sleep
 
-
-passage(title='driving/thoughts/action/coffee' sleepAfter=500 @leave='goToPassage("driving/thoughts/idle/air")')
+passage(title='driving/thoughts/action/breathing' sleepAfter=500 @leave='goToPassage("driving/thoughts/idle/pullover")')
   .passage-box.thoughts
-    p I wonder how much of coffee is a placebo?
-    p I've defintely fallen asleep after drinking coffee.
-    p It probably helps in some way though.
-    p Why would so many people use it if it didn't help?
-    p It is a stimulant, right?
-    p "Stimulant" sounds like a thing that's supposed to keep you awake.
-    p But maybe it doesn't work on me.
-    p I've read that the body produces melatonin naturally.
-    p That's how people get tired.
+    p How do you "breath in the stomach"?
+    p That doesn't make sense.
+    p I don't know if there's any difference.
+    p In any case, it's breathing.
+    p Breathing brings Oxygen into the body.
+    p Oxygen is carried to my brain.
+    p My brain becomes more alert with Oxygen.
+    p Wait, maybe that's not how it works.
+    p What does Oxygen do to the brain?
+    //- Drift off to sleep    
+
+passage(title='driving/thoughts/action/posture' sleepAfter=500 @leave='goToPassage("driving/thoughts/idle/final-shakeoff")')
+  .passage-box.thoughts
+    //- Pause
+    p I need to sit like this more often.
+    p I've never had great posture.
+    p It's probably from being raised by video games.
+    p I should do more yoga.
+    p I feel weird about doing yoga.
+    p It's supposed to be meditative.
+    p You're supposed to clear your mind.
+    p It's probably easier than I'm making it.
+    p I guess I'm supposed to just think about nothing.
     //- Drift off to sleep
