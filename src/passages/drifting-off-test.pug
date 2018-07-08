@@ -1,3 +1,25 @@
-passage(title='drifting-off')
+passage(title='drifting-off' @enter='goToPassage("drifting-off/first")')
   .passage-box
-    p Drift off now
+    passage(title='drifting-off/first')
+      p
+        | I am thinking about
+        | #[passage(inline sequence=1)  something]
+        | #[passage(inline sequence=2)  important]
+        | #[hyperlink(to='+1' v-if='currentPassageSequence < 2') …]
+        | #[hyperlink(to='drifting-off/second' v-else) …]
+    passage(title='drifting-off/second')
+      p
+        | I am wanting to do
+        | #[passage(inline sequence=1)  something]
+        | #[passage(inline sequence=2)  terrible]
+        | #[hyperlink(to='+1' v-if='currentPassageSequence <= 2') …]
+
+      p(v-if='currentPassageSequence > 2')
+        | Like
+        | #[passage(inline sequence=4)  something]
+        | #[passage(inline sequence=5)  big]
+        | #[hyperlink(to='+1' v-if='currentPassageSequence < 5') …]
+        | #[hyperlink(to='drifting-off/third' v-else) …]
+
+    passage(title='drifting-off/third')
+      p silence
