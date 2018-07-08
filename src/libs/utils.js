@@ -7,4 +7,10 @@ const isPassageSatisfied = ( passageTitle, requirement ) => {
   return requirementParts.splice(0,passageTitleParts.length).join('/') === passageTitle;
 }
 
-export { isPassageSatisfied };
+const isPassageInHistory = ( passageTitle, passageHistory ) => {
+  return passageHistory.findIndex((passageHistoryItem) => {
+    return isPassageSatisfied( passageTitle, passageHistoryItem );
+  });
+}
+
+export { isPassageSatisfied, isPassageInHistory };

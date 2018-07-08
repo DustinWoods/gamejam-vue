@@ -1,15 +1,16 @@
 <template>
-  <a class='passage-hyperlink' @click='clickLink' v-bind:class='{ current: isCurrentPassage }'><slot /></a>
+  <a class='passage-hyperlink' @click='clickLink' v-bind:class='{ current: isCurrentPassage, disabled: disabled }'><slot /></a>
 </template>
 
 <script>
-import { isPassageSatisfied } from '../../libs/utils';
+import { isPassageSatisfied, isPassageInHistory } from '../../libs/utils';
 import { mappedMutations, mappedGetters, mappedActions } from '../../store';
 
 export default {
   name: 'Hyperlink',
   props: [
     'to',
+    'notAgain',
   ],
   methods: {
     ...mappedActions,
@@ -24,13 +25,23 @@ export default {
     isCurrentPassage() {
       return isPassageSatisfied(this.to, this.currentPassage);
     },
+    disabled() {
+      if(!this.to) return true;
+      if(!this.notAgain) return false;
+      return isPassageInHistory(this.to, this.passageHistory) !== -1;
+    },
   }
 };
 </script>
 
 <style lang="scss" scoped>
-  .passage-hyperlink:not(.current) {
-    cursor: pointer;
-    text-decoration: underline;
+  .passage-hyperlink {
+    &:not(.current):not(.disabled) {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+    &.disabled {
+      text-decoration: line-through;
+    }
   }
 </style>

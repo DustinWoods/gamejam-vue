@@ -4,6 +4,7 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 const state = {
+	passageHistory: [],
 	currentPassage: 'intro',
 	currentPassageSequence: 0,
 	currentTime: (new Date('01/01/2018 06:00')).getTime(),
@@ -29,7 +30,11 @@ const mutations = {
 			return;
 		}
 		state.currentPassageSequence = 0;
+		state.passageHistory = [state.currentPassage, ...state.passageHistory];
 		state.currentPassage = newPassage;
+	},
+	resetPassageHistory (state) {
+		state.passageHistory = [];
 	},
 	incrementTime (state, minutes) {
 		state.currentTime += minutes * 1000 * 60;
