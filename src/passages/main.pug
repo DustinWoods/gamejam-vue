@@ -2,6 +2,7 @@
 include ./intro.pug
 include ./audio-test.pug
 include ./gameplay-test.pug
+include ./thoughts-1.pug
 
 passage(title='morning-alarm' @enter="$refs.soundAlarm.play()" @leave="$refs.soundAlarm.stop()")
   howl(file='alarm.ogg' loop=true ref='soundAlarm')
