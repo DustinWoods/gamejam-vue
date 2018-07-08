@@ -1,5 +1,7 @@
+backdrop(title='gameplay-test' sequence=0 type='color' color='#444')
+backdrop(title='gameplay-test' sequence=2 file='test-cinemagraph.mp4' type='video' color='white')
+
 passage(title='gameplay-test' @enter="$refs.soundDream.fadeIn()" @leave="$refs.soundDream.fadeOut()")
-  backdrop(file='test-cinemagraph.mp4' type='video' color='white')
   howl(file='dream.ogg' loop=true ref='soundDream')
   div.passage-box
     p This is a test box
