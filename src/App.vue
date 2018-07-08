@@ -24,6 +24,7 @@ export default {
 
 body {
   overflow: hidden;
+  background: #000;
 }
 
 .passage-box {
