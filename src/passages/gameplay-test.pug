@@ -3,7 +3,7 @@ backdrop(title='gameplay-test' sequence=2 file='test-cinemagraph.mp4' type='vide
 
 passage(title='gameplay-test' @enter="$refs.soundDream.fadeIn()" @leave="$refs.soundDream.fadeOut()")
   howl(file='dream.ogg' loop=true ref='soundDream')
-  div.passage-box
+  .passage-box
     p This is a test box
 
     passage(sequence=1 @enter="$refs.soundDream.fadeOut()")
