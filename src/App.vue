@@ -7,22 +7,26 @@
 
 <script>
 import { mappedMutations, mappedGetters, mappedActions } from './store';
+import { isPassageSatisfied } from './libs/utils';
 
 export default {
   name: 'app',
   data: function() {
     return {
-      debug: true,
+      debug: false,
+      showBackground: true,
     }
   },
   methods: {
     introEnter() {
       this.resetGameState();
       this.$refs["music-loop"].stop();
-      this.$refs["riving-window-open"].stop();
+      this.$refs["driving-window-open"].stop();
       this.$refs["driving"].stop();
+      this.showBackground = true;
     },
     fadeInBackgrounNoise(duration) {
+      this.showBackground = true;
       if(!this.currentBackgroundNoise) {
         this.currentBackgroundNoise = this.$refs.driving;
       }
@@ -32,6 +36,7 @@ export default {
       }    
     },
     fadeOutBackgrounNoise(duration) {
+      this.showBackground = false;
       if(!this.currentBackgroundNoise) {
         this.currentBackgroundNoise = this.$refs.driving;
       }
@@ -47,25 +52,25 @@ export default {
       this.currentBackgroundNoise = this.$refs['driving-window-open'];
       setTimeout(() => {
         this.goToPassage('driving/actions/window');
-      }, 2000);
+      }, 5000);
     },
     breatheSequence() {
       this.$refs["breath"].play();
       setTimeout(() => {
         this.goToPassage('driving/actions/deepbreath');
-      }, 3000);
+      }, 5000);
     },
     coffeeSequence() {
       this.$refs["sip"].play();
       setTimeout(() => {
         this.goToPassage('driving/actions/coffee');
-      }, 2000);
+      }, 5000);
     },
     sitUpSequence() {
       this.$refs["sit-up"].play();
       setTimeout(() => {
-        this.goToPassage('driving/actions/window');
-      }, 2000);
+        this.goToPassage('driving/actions/situp');
+      }, 5000);
     },
     startRadioLoop() {
       this.$refs["music-loop"].play();
@@ -76,10 +81,17 @@ export default {
         this.goToPassage('driving/actions/radio');
       }, 7000);
     },
+    finalSequence() {
+      this.$refs["driving-window-open"].fadeOut();
+      setTimeout(this.$refs["music-loop"].fadeOut.bind(this.$refs["music-loop"], 5000), 2000);
+    },
     ...mappedMutations,
     ...mappedActions,
   },
   computed: {
+    showDrivingBackground() {
+      return isPassageSatisfied('driving', this.currentPassage) && this.showBackground;
+    },
     ...mappedGetters,
   },
 };

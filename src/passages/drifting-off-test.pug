@@ -1,6 +1,3 @@
-
-transition(name='fall-asleep-background')
-  backdrop(title='drifting-off' file='test-cinemagraph.mp4' type='video' color='white')
 transition(name='fall-asleep' v-on:after-enter='goToPassage("sleeping-1")')
   passage(title='drifting-off' @enter='goToPassage("drifting-off/first")')
     .passage-box

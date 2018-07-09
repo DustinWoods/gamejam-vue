@@ -1,12 +1,12 @@
 passage(title='driving/thoughts/idle/surroundings' @enter='fadeInBackgrounNoise(1000)')
   .passage-box.thoughts
-    passage(sequence=0): p I'm so tired.
+    passage(sequence=0): p I am so tired.
     passage(sequence=1): p It's been a long day.
     passage(sequence=1): p This car is dirty.
     passage(sequence=1): p This seat is warm.
     passage(sequence=1): p There's a glare on the windshield.
     passage(sequence=1): p It's quiet.
-    passage(sequence=1): p It's nice to have time to myself.
+    passage(sequence=1): p But it's nice to have time to myself.
     p(v-if='currentPassageSequence == 0'): hyperlink(to='+1')
     p(v-else): hyperlink(to='driving/choices') I need to stay awake.
 

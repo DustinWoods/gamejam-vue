@@ -1,6 +1,6 @@
 <template lang='pug'>
   transition
-    div#container(v-bind:style='{ backgroundColor: color }' v-if='isCurrentPassage')
+    div#container(v-if="show" v-bind:style='{ backgroundColor: color }')
       div#image.full(v-if='type == "image"' v-bind:style='{ backgroundImage: backgroundImage }')
       video#video.full(v-if='type == "video"' autoplay muted loop)
         source(v-bind:src='backgroundVideo' type='video/mp4')
@@ -8,7 +8,6 @@
 
 <script>
 import { mappedGetters } from '../../store';
-import { isPassageSatisfied } from '../../libs/utils';
 
 export default {
   name: 'Backdrop',
@@ -25,12 +24,11 @@ export default {
       default: '#fff',
       type: String,
     },
-    title: {
-      default: '',
-      type: String,
-    },
     sequence: {
       default: 0,
+    },
+    show: {
+      default: false
     }
   },
   computed: {
@@ -41,11 +39,6 @@ export default {
     backgroundVideo: function() {
       if(this.type !== 'video') return;
       return require('../../assets/backdrops/' + this.file);
-    },
-    isCurrentPassage() {
-      const titleSatisfy = this.title ? isPassageSatisfied( this.title, this.currentPassage ) : true;
-      const sequenceSatisfy = this.currentPassageSequence >= this.sequence;
-      return titleSatisfy && sequenceSatisfy;
     },
     ...mappedGetters,
   }
@@ -62,10 +55,18 @@ export default {
     z-index: -99;
     &.v-enter-active {
       animation: fade-in 400ms;
+      animation-direction: normal;
     }
-    &.v-leave {
-      display: none;
+    // &.v-leave {
+    //   display: none;
+    // }
+    &.v-leave-active {
+      animation: fade-in 2000ms;
+      animation-direction: reverse;
     }
+    // &.v-enter {
+    //   display: none;
+    // }
   }
   .full {
     position: absolute;
@@ -93,5 +94,5 @@ export default {
     100% {
       opacity: 1;
     }
-  }  
+  }
 </style>

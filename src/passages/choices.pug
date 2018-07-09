@@ -2,7 +2,7 @@ passage(title='driving/choices')
   .passage-box.choices
     p(v-if='actionsCount >= 0'): hyperlink(to='driving/actions/coffee-blank' notAgain="true" @go='incrementActionsCount(); coffeeSequence();') Drink some coffee.
     p(v-if='actionsCount >= 1'): hyperlink(to='driving/actions/window-blank' notAgain="true" @go='incrementActionsCount(); windowSequence()') Open a window.
-    p(v-if='actionsCount >= 0'): hyperlink(to='driving/actions/radio-blank' notAgain="true" @go='incrementActionsCount(); radioSequence()') Turn on the radio.
+    p(v-if='actionsCount >= 2'): hyperlink(to='driving/actions/radio-blank' notAgain="true" @go='incrementActionsCount(); radioSequence()') Turn on the radio.
     p(v-if='actionsCount >= 3'): hyperlink(to='driving/actions/deepbreath-blank' notAgain="true" @go='incrementActionsCount(); breatheSequence();') Focus on breathing.
     p(v-if='actionsCount >= 4'): hyperlink(to='driving/actions/situp-blank' notAgain="true" @go='incrementActionsCount(); sitUpSequence();') Sit up straight.
     p(v-if='actionsCount >= 5'): hyperlink(to='driving/thoughts/idle/final') I got this.

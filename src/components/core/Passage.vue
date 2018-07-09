@@ -79,7 +79,7 @@ export default {
   computed: {
     difficultyTimeout() {
       if(!this.fallAsleep) return 0;
-      return 20 * Math.pow(Math.E, -(this.currentPassageSequence - parseInt(this.sleepSequenceIdeal)));
+      return 1500 * Math.pow(Math.E, -0.75 * (this.currentPassageSequence - parseInt(this.sleepSequenceIdeal)));
     },
     isCurrentPassage() {
       const titleSatisfy = this.title ? isPassageSatisfied( this.title, this.currentPassage ) : true;

@@ -6,15 +6,13 @@ include ./thoughts.pug
 include ./thoughts-idle.pug
 //- Test stuff
 include ./audio-test.pug
-include ./gameplay-test.pug
 include ./thoughts-1.pug
 include ./drifting-off-test.pug
 
-backdrop(title='driving' type='color' color='#002')
-backdrop(title='driving' file='car-dash-loop.mp4' type='video' color='#000')
+backdrop(:show='showDrivingBackground' file='car-dash-loop.mp4' type='video' color='#000')
+backdrop(:show='(currentPassage == "deep-sleep")' type='color' color='#fff')
 
-backdrop(title='deep-sleep' type='color' color='#000')
-passage(title='deep-sleep' @enter='goToPassage("intro")')
+passage(title='deep-sleep' @enter='finalSequence')
   p
 
 howl(file='radio-open.ogg' ref='music-open' @end='startRadioLoop')
