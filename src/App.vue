@@ -84,6 +84,7 @@ export default {
     finalSequence() {
       this.$refs["driving-window-open"].fadeOut();
       setTimeout(this.$refs["music-loop"].fadeOut.bind(this.$refs["music-loop"], 5000), 2000);
+      setTimeout(this.goToPassage.bind(this, 'intro'), 10000);
     },
     ...mappedMutations,
     ...mappedActions,
