@@ -1,53 +1,59 @@
 passage(title='driving/thoughts/idle/surroundings' @enter='fadeInBackgrounNoise(1000)')
   .passage-box.thoughts
-    p I'm so tired.
-    p It's been a long day.
-    p This car is dirty.
-    p This seat is warm.
-    p There's a glare on the windshield.
-    p It's quiet.
-    p It's nice to have time to myself.
-    p: hyperlink(to='driving/choices') I need to stay awake.
+    passage(sequence=0): p I'm so tired.
+    passage(sequence=1): p It's been a long day.
+    passage(sequence=1): p This car is dirty.
+    passage(sequence=1): p This seat is warm.
+    passage(sequence=1): p There's a glare on the windshield.
+    passage(sequence=1): p It's quiet.
+    passage(sequence=1): p It's nice to have time to myself.
+    p(v-if='currentPassageSequence == 0'): hyperlink(to='+1') ...
+    p(v-else): hyperlink(to='driving/choices') I need to stay awake.
 
 passage.wake-up.slow(title='driving/thoughts/idle/denial' @enter='fadeInBackgrounNoise(100)')
   .passage-box.thoughts
-    p Am I starting to drift off?
-    p It's not even that late.
-    p I'm zoning out, that's why I feel this way.
-    p Gotta keep myself entertained or something.
-    p It's all good.
-    p: hyperlink(to='driving/choices') I got this.
+    passage(sequence=0): p Am I starting to drift off?
+    passage(sequence=1): p It's not even that late.
+    passage(sequence=1): p I'm zoning out, that's why I feel this way.
+    passage(sequence=1): p Gotta keep myself entertained or something.
+    passage(sequence=1): p It's all good.
+    p(v-if='currentPassageSequence == 0'): hyperlink(to='+1') ...
+    p(v-else): hyperlink(to='driving/choices') I got this.
   
 passage.wake-up(title='driving/thoughts/idle/noise' @enter='fadeInBackgrounNoise(100)')
   .passage-box.thoughts
-    p I need to shake this off.
-    p Something to focus on.
-    p I never feel this way if someone is with me.
-    p Maybe if I talk to myself.
-    p Noise might help.
-    p: hyperlink(to='driving/choices') I got this.
+    passage(sequence=0): p I need to shake this off.
+    passage(sequence=1): p Something to focus on.
+    passage(sequence=1): p I never feel this way if someone is with me.
+    passage(sequence=1): p Maybe if I talk to myself.
+    passage(sequence=1): p Noise might help.
+    p(v-if='currentPassageSequence == 0'): hyperlink(to='+1') ...
+    p(v-else): hyperlink(to='driving/choices') I got this.
 
 passage.wake-up(title='driving/thoughts/idle/air' @enter='fadeInBackgrounNoise(100)')
   .passage-box.thoughts
-    p Shit, this isn't good.
-    p How much time has passed?
-    p It was just a split second.
-    p Just breath.
-    p Deep breaths.
-    p The air should wake me up.
-    p: hyperlink(to='driving/choices') I got this.
+    passage(sequence=0): p Shit, this isn't good.
+    passage(sequence=1): p How much time has passed?
+    passage(sequence=1): p It was just a split second.
+    passage(sequence=1): p Just breath.
+    passage(sequence=1): p Deep breaths.
+    passage(sequence=1): p The air should wake me up.
+    p(v-if='currentPassageSequence == 0'): hyperlink(to='+1') ...
+    p(v-else): hyperlink(to='driving/choices') I got this.
 
 passage.wake-up(title='driving/thoughts/idle/pullover' @enter='fadeInBackgrounNoise(100)')
   .passage-box.thoughts
-    p Did I do it again?
-    p Maybe I should pull over.
-    p That is always an option.
-    p What would that be like?
-    p Sleeping on the side of the road?
-    p: hyperlink(to='driving/choices') I got this.
+    passage(sequence=0): p Did I do it again?
+    passage(sequence=1): p Maybe I should pull over.
+    passage(sequence=1): p That is always an option.
+    passage(sequence=1): p What would that be like?
+    passage(sequence=1): p Sleeping on the side of the road?
+    p(v-if='currentPassageSequence == 0'): hyperlink(to='+1') ...
+    p(v-else): hyperlink(to='driving/choices') I got this.
 
 passage.wake-up.slowest(title='driving/thoughts/idle/final-shakeoff' @enter='fadeInBackgrounNoise(100)')
   .passage-box.thoughts
-    p I think I'm almost there.
-    p I can keep pushing through.
-    p: hyperlink(to='driving/choices') I think I got this.
+    passage(sequence=0): p I think I'm almost there.
+    passage(sequence=1): p I can keep pushing through.
+    p(v-if='currentPassageSequence < 1'): hyperlink(to='+1') ...
+    p(v-else): hyperlink(to='driving/choices') I think I got this.
