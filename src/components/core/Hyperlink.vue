@@ -27,6 +27,7 @@ export default {
       return isPassageSatisfied(this.to, this.currentPassage);
     },
     disabled() {
+      if(this.transitioning) return true;
       if(!this.to) return true;
       if(!this.notAgain) return false;
       return isPassageInHistory(this.to, this.passageHistory) !== -1;

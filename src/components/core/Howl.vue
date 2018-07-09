@@ -106,7 +106,9 @@ export default {
       }
     },
     fadeIn(duration = 500, to = 1) {
-      this.play();
+      if(!this.playing()) {        
+        this.play();
+      }
       this.sound.fade(0, to, duration);
     },
     state() {

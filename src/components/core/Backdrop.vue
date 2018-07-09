@@ -31,7 +31,6 @@ export default {
     },
     sequence: {
       default: 0,
-      type: Number,
     }
   },
   computed: {

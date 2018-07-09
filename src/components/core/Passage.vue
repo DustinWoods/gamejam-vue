@@ -1,11 +1,11 @@
 <template lang='pug'>
   transition(@enter='handleEnter' @after-leave='handleLeave')
-    div(v-if='(isCurrentPassage && !fallingAsleep)' class='passageContainer' v-bind:class='{inline, fallingAsleep:(sleepAfter > 0)}')
+    div(v-if='(isCurrentPassage && !fallingAsleep)' class='passageContainer' v-bind:class='{inline, fallingAsleepClass:fallAsleep}')
       slot
 </template>
 
 <script>
-import { mappedGetters } from '../../store';
+import { mappedGetters, mappedMutations } from '../../store';
 import { isPassageSatisfied } from '../../libs/utils';
 
 export default {
@@ -17,37 +17,70 @@ export default {
     },
     sequence: {
       default: 0,
-      type: Number,
     },
     inline: {
       default: false,
       type: Boolean,
     },
-    sleepAfter: {
-      default: null,
-      type: Number,
-    }
+    fallAsleep: {
+      default: false,
+    },
+    sleepSequenceMin: {
+      default: 0,
+    },
+    sleepSequenceIdeal: {
+      default: 0
+    },
   },
   data: function() {
     return {
       fallingAsleep: false,
-    }
+      difficulty: 0,
+      sleepTimeout: 0,
+    };
   },
   methods: {
+    restartSleepTimer() {
+      if(this.sleepTimeout) {
+        clearTimeout(this.sleepTimeout);
+        this.sleepTimeout = 0;
+      }
+      if(!this.isCurrentPassage) return;
+      if(this.currentPassageSequence <= parseInt(this.sleepSequenceMin)) {
+        return;
+      }
+      this.sleepTimeout = setTimeout(this.startSleep, this.difficultyTimeout);
+    },
     startSleep() {
       this.fallingAsleep = true;
+      this.$emit('falling');
+      this.setTransitioningState(true);
     },
     handleEnter() {
-      this.$emit('enter');
-      if(this.sleepAfter !== null && this.sleepAfter > 0) {
-        setTimeout(this.startSleep, this.sleepAfter);
+      this.fallingAsleep = false;
+      if(this.fallAsleep) {
+        this.restartSleepTimer();
       }
+      this.$emit('enter');
     },
     handleLeave() {
+      if(this.fallingAsleep) {
+        this.setTransitioningState(false);
+      }
+      if(this.sleepTimeout) {
+        this.fallingAsleep = false;
+        clearTimeout(this.sleepTimeout);
+        this.sleepTimeout = 0;
+      }      
       this.$emit('leave');
     },
+    ...mappedMutations
   },
   computed: {
+    difficultyTimeout() {
+      if(!this.fallAsleep) return 0;
+      return 6 * Math.pow(Math.E, -(this.currentPassageSequence - parseInt(this.sleepSequenceIdeal)));
+    },
     isCurrentPassage() {
       const titleSatisfy = this.title ? isPassageSatisfied( this.title, this.currentPassage ) : true;
       const sequenceSatisfy = this.currentPassageSequence >= this.sequence;
@@ -55,6 +88,11 @@ export default {
     },
     ...mappedGetters,
   },
+  watch: {
+    difficultyTimeout() {
+      this.restartSleepTimer();
+    }
+  }
 }
 </script>
 
@@ -80,10 +118,10 @@ export default {
       animation-duration: 800ms;
     }
   }
-  &.v-leave:not(.fallingAsleep) {
+  &.v-leave:not(.fallingAsleepClass) {
     display: none;
   }
-  &.fallingAsleep.v-leave-active {
+  &.fallingAsleepClass.v-leave-active {
     animation: fade-to-blur $sleep-transition-time;
     animation-delay: $sleep-transition-delay;
     animation-timing-function: cubic-bezier(1.000, 0.005, 0.470, 0.780);

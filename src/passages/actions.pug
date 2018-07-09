@@ -9,7 +9,7 @@ passage(title='driving/actions')
       p Maybe that helps keep me awake.
       p: hyperlink(to='driving/thoughts/action/coffee') ...
 
-    passage(title='driving/actions/window')
+    passage(title='driving/actions/window' @enter='$refs.window.play()')
       //- window noise
       p That actually feels nice.
       p I think the warm air was getting to me.

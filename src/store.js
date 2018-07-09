@@ -10,6 +10,7 @@ const state = {
 	actionsCount: 0,
 	currentTime: (new Date('01/01/2018 06:00')).getTime(),
 	alarmOn: true,
+	transitioning: false,
 };
 
 const mutations = {
@@ -41,6 +42,9 @@ const mutations = {
 	incrementActionsCount(state) {
 		state.actionsCount += 1;
 	},
+	setTransitioningState(state, isTransitioning) {
+		state.transitioning = isTransitioning;
+	}
 };
 
 const actions = {};

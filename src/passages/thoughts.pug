@@ -1,84 +1,91 @@
-passage(title='driving/thoughts/idle/final' sleepAfter=500 @leave='goToPassage("deep-sleep")')
+passage(title='driving/thoughts/idle/final' fallAsleep="true" sleepSequenceMin=4 sleepSequenceIdeal=10 @leave='goToPassage("deep-sleep")')
   .passage-box.thoughts
-    p I bet I'm not the only one this tired.
-    p It's not a big deal.
-    p Next time though, I won't commit to so much.
-    p I need to learn to say now sometimes.
-    p But it's okay, she's important to me.
-    p I bet she'd tell me to pull over.
-    p I love the way she voices her opinions.
-    p She's a leader type I think.
-    p I'd imagine she could make a career out it.
-    p I could picture her.
-    p Walking into a board room.
-    p With that smile.
-    p The way she lights a room.
-    p It takes my breath away.
+    passage(sequence=0): p I bet I'm not the only one this tired.
+    passage(sequence=1): p It's not a big deal.
+    passage(sequence=2): p Next time though, I won't commit to so much.
+    passage(sequence=3): p I need to learn to say now sometimes.
+    passage(sequence=4): p But it's okay, she's important to me.
+    passage(sequence=5): p I bet she'd tell me to pull over.
+    passage(sequence=6): p I love the way she voices her opinions.
+    passage(sequence=7): p She's a leader type I think.
+    passage(sequence=8): p I'd imagine she could make a career out it.
+    passage(sequence=9): p I could picture her.
+    passage(sequence=10): p Walking into a board room.
+    passage(sequence=11): p With that smile.
+    passage(sequence=12): p The way she lights a room.
+    passage(sequence=13): p It takes my breath away.
+    p: hyperlink(to='+1') ...
     //- Drift off to sleep finally
 
-passage(title='driving/thoughts/action/coffee' sleepAfter=500 @leave='goToPassage("driving/thoughts/idle/denial")')
+passage(title='driving/thoughts/action/coffee' fallAsleep="true" sleepSequenceIdeal=8 @falling='$refs.driving.fadeOut(2500)' @leave='goToPassage("driving/thoughts/idle/denial")')
   .passage-box.thoughts
-    p I wonder how much of coffee is a placebo?
-    p I've defintely fallen asleep after drinking coffee.
-    p It probably helps in some way though.
-    p Why would so many people use it if it didn't help?
-    p It is a stimulant, right?
-    p "Stimulant" sounds like a thing that's supposed to keep you awake.
-    p But maybe it doesn't work on me.
-    p I've read that the body produces melatonin naturally.
-    p That's how people get tired.
+    passage(sequence=0): p I wonder how much of coffee is a placebo?
+    passage(sequence=1): p I've defintely fallen asleep after drinking coffee.
+    passage(sequence=2): p It probably helps in some way though.
+    passage(sequence=3): p Why would so many people use it if it didn't help?
+    passage(sequence=4): p It is a stimulant, right?
+    passage(sequence=5): p "Stimulant" sounds like a thing that's supposed to keep you awake.
+    passage(sequence=6): p But maybe it doesn't work on me.
+    passage(sequence=7): p I've read that the body produces melatonin naturally.
+    passage(sequence=8): p That's how people get tired.
+    p: hyperlink(to='+1') ...
     //- Drift off to sleep
 
-passage(title='driving/thoughts/action/window' sleepAfter=500 @leave='goToPassage("driving/thoughts/idle/noise")')
+passage(title='driving/thoughts/action/window' fallAsleep="true" sleepSequenceIdeal=8 @falling='$refs.driving.fadeOut(2500)' @leave='goToPassage("driving/thoughts/idle/noise")')
   .passage-box.thoughts
-    p The cool air reminds me of the beach.
-    p My Dad would always open his window when he was tired.
-    p It seemed to work for him.
-    p My Dad also loved the beach.
-    p The cool air there is refreshing.
-    p I love the white noise of the ocean waves.
-    p It feels like not much else matters there.
-    p That might be why so many people there don't work.
-    p I don't judge them though.
-    p One day none of us should have to work.
+    passage(sequence=0): p The cool air reminds me of the beach.
+    passage(sequence=1): p My Dad would always open his window when he was tired.
+    passage(sequence=2): p It seemed to work for him.
+    passage(sequence=3): p My Dad also loved the beach.
+    passage(sequence=4): p The cool air there is refreshing.
+    passage(sequence=5): p I love the white noise of the ocean waves.
+    passage(sequence=6): p It feels like not much else matters there.
+    passage(sequence=7): p That might be why so many people there don't work.
+    passage(sequence=8): p I don't judge them though.
+    passage(sequence=9): p One day none of us should have to work.
+    p: hyperlink(to='+1') ...
     //- Drift off to sleep
 
-passage(title='driving/thoughts/action/radio' sleepAfter=500 @leave='goToPassage("driving/thoughts/idle/air")')
+passage(title='driving/thoughts/action/radio' fallAsleep="true" sleepSequenceIdeal=8 @falling='$refs.driving.fadeOut(2500)' @leave='goToPassage("driving/thoughts/idle/air")')
   .passage-box.thoughts
-    p Pop music is all the same.
-    p I wish more people appreciated underated art.
-    p Actually, what would that look like?
-    p Would I have the same sentiment about it as pop music?
-    p Maybe my taste in art is as shallow as the next guy's.
-    p Reminds me of that Banksey documentary.
-    p What was the moral to that film?
-    p Was it that art is all the same?
-    p No no, it was something to do with the value of art.
+    passage(sequence=0): p Pop music is all the same.
+    passage(sequence=1): p I wish more people appreciated underated art.
+    passage(sequence=2): p Actually, what would that look like?
+    passage(sequence=3): p Would I have the same sentiment about it as pop music?
+    passage(sequence=4): p Maybe my taste in art is as shallow as the next guy's.
+    passage(sequence=5): p Reminds me of that Banksey documentary.
+    passage(sequence=6): p What was the moral to that film?
+    passage(sequence=7): p Was it that art is all the same?
+    passage(sequence=8): p No no, it was something to do with the value of art.
+    p: hyperlink(to='+1') ...
     //- Drift off to sleep
 
-passage(title='driving/thoughts/action/breathing' sleepAfter=500 @leave='goToPassage("driving/thoughts/idle/pullover")')
+passage(title='driving/thoughts/action/breathing' fallAsleep="true" sleepSequenceIdeal=8 @falling='$refs.driving.fadeOut(2500)' @leave='goToPassage("driving/thoughts/idle/pullover")')
   .passage-box.thoughts
-    p How do you "breath in the stomach"?
-    p That doesn't make sense.
-    p I don't know if there's any difference.
-    p In any case, it's breathing.
-    p Breathing brings Oxygen into the body.
-    p Oxygen is carried to my brain.
-    p My brain becomes more alert with Oxygen.
-    p Wait, maybe that's not how it works.
-    p What does Oxygen do to the brain?
+    passage(sequence=0): p How do you "breath in the stomach"?
+    passage(sequence=1): p That doesn't make sense.
+    passage(sequence=2): p I don't know if there's any difference.
+    passage(sequence=3): p In any case, it's breathing.
+    passage(sequence=4): p Breathing brings Oxygen into the body.
+    passage(sequence=5): p Oxygen is carried to my brain.
+    passage(sequence=6): p My brain becomes more alert with Oxygen.
+    passage(sequence=7): p Wait, maybe that's not how it works.
+    passage(sequence=8): p What does Oxygen do to the brain?
+    p: hyperlink(to='+1') ...
     //- Drift off to sleep    
 
-passage(title='driving/thoughts/action/posture' sleepAfter=500 @leave='goToPassage("driving/thoughts/idle/final-shakeoff")')
+passage(title='driving/thoughts/action/posture' fallAsleep="true" sleepSequenceIdeal=8 @falling='$refs.driving.fadeOut(2500)' @leave='goToPassage("driving/thoughts/idle/final-shakeoff")')
   .passage-box.thoughts
     //- Pause
-    p I need to sit like this more often.
-    p I've never had great posture.
-    p It's probably from being raised by video games.
-    p I should do more yoga.
-    p I feel weird about doing yoga.
-    p It's supposed to be meditative.
-    p You're supposed to clear your mind.
-    p It's probably easier than I'm making it.
-    p I guess I'm supposed to just think about nothing.
+    passage(sequence=0): p I need to sit like this more often.
+    passage(sequence=1): p I've never had great posture.
+    passage(sequence=2): p It's probably from being raised by video games.
+    passage(sequence=3): p I should do more yoga.
+    passage(sequence=4): p I feel weird about doing yoga.
+    passage(sequence=5): p It's supposed to be meditative.
+    passage(sequence=6): p You're supposed to clear your mind.
+    passage(sequence=7): p It's probably easier than I'm making it.
+    passage(sequence=8): p I guess I'm supposed to just think about nothing.
+
+    p: hyperlink(to='+1') ...
     //- Drift off to sleep
