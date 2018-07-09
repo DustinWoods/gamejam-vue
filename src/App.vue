@@ -76,10 +76,12 @@ export default {
       this.$refs["music-loop"].play();
     },
     radioSequence() {
-      this.$refs["music-open"].fadeIn();
+      setTimeout(() => {
+        this.$refs["music-open"].fadeIn();
+      }, 500);
       setTimeout(() => {
         this.goToPassage('driving/actions/radio');
-      }, 7000);
+      }, 7500);
     },
     finalSequence() {
       this.$refs["driving-window-open"].fadeOut();
