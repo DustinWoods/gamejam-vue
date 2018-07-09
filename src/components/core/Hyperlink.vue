@@ -41,6 +41,18 @@ export default {
     &:not(.current):not(.disabled) {
       cursor: pointer;
       text-decoration: underline;
+      &:after {
+        content: '➢';
+        margin-left: 4px;
+        text-decoration: none;
+        color: #0d329e;
+        display: inline-block;
+        font-size: 31px;
+        vertical-align: middle;
+      }
+      &:hover:after {
+        color: #6d8ce7;
+      }
     }
     &.disabled {
       text-decoration: line-through;

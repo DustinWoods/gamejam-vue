@@ -1,9 +1,12 @@
-passage(title='intro' @enter='resetGameState')
+passage(title='intro' @enter='introEnter')
   .passage-box
     h1 µsleep
+    p.note (Headphones Recommended!)
     p: hyperlink(to='driving/thoughts/idle/surroundings') Play
-    p: hyperlink(to='driving/thoughts/action/posture') Test sleep
+    //- p: hyperlink(to='driving/thoughts/action/posture') Test sleep
     //- p: hyperlink(to='gameplay-test') Gameplay Test...
     //- p: hyperlink(to='audio-test-1') Audio Test...
     //- p: hyperlink(to='drifting-off') Drift off test
     //- p: hyperlink(to='thoughts-1') Memories...
+    span.credits
+      p a game by altru with help from sky ♡

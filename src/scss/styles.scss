@@ -6,9 +6,21 @@ body {
   background: #000;
 }
 
+.note {
+  background: rgba(255, 255, 255, 0.301);
+  padding: 2px 4px;
+  display: inline-block;
+  font-size: 12px;
+}
+.credits {
+  margin-top: 20px;
+  display: inline-block;
+  font-size: 10px;
+  color: #88939e;
+}
 .passage-box {
   color: #2c3e50;
-  background-color: #fffc;
+  background-color: rgba(255, 255, 255, 0.719);
   padding: 30px;
   width: 33%;
   min-width: 600px;

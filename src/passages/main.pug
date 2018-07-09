@@ -11,12 +11,17 @@ include ./thoughts-1.pug
 include ./drifting-off-test.pug
 
 backdrop(title='driving' type='color' color='#002')
+backdrop(title='driving' file='car-dash-loop.mp4' type='video' color='#000')
 
 backdrop(title='deep-sleep' type='color' color='#000')
 passage(title='deep-sleep' @enter='goToPassage("intro")')
   p
 
+howl(file='radio-open.ogg' ref='music-open' @end='startRadioLoop')
+howl(file='radio-loop.ogg' loop=true ref='music-loop')
 howl(file='driving.ogg' loop=true ref='driving')
 howl(file='driving-window-open.ogg' loop=true ref='driving-window-open')
 howl(file='window.ogg' loop=false ref='window')
 howl(file='sit-up.ogg' loop=false ref='sit-up')
+howl(file='sip.ogg' loop=false ref='sip')
+howl(file='breath.ogg' loop=false ref='breath')

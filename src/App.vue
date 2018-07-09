@@ -16,17 +16,29 @@ export default {
     }
   },
   methods: {
+    introEnter() {
+      this.resetGameState();
+      this.$refs["music-loop"].stop();
+      this.$refs["riving-window-open"].stop();
+      this.$refs["driving"].stop();
+    },
     fadeInBackgrounNoise(duration) {
       if(!this.currentBackgroundNoise) {
         this.currentBackgroundNoise = this.$refs.driving;
       }
-      this.currentBackgroundNoise.fadeIn(duration);      
+      this.currentBackgroundNoise.fadeIn(duration);  
+      if(this.$refs["music-loop"].playing) {
+        this.$refs["music-loop"].fade(10,1,duration);
+      }    
     },
     fadeOutBackgrounNoise(duration) {
       if(!this.currentBackgroundNoise) {
         this.currentBackgroundNoise = this.$refs.driving;
       }
       this.currentBackgroundNoise.fadeOut(duration);
+      if(this.$refs["music-loop"].playing) {
+        this.$refs["music-loop"].fade(1,0,duration);
+      }
     },
     windowSequence() {
       this.$refs.window.play();
@@ -37,11 +49,32 @@ export default {
         this.goToPassage('driving/actions/window');
       }, 2000);
     },
+    breatheSequence() {
+      this.$refs["breath"].play();
+      setTimeout(() => {
+        this.goToPassage('driving/actions/deepbreath');
+      }, 3000);
+    },
+    coffeeSequence() {
+      this.$refs["sip"].play();
+      setTimeout(() => {
+        this.goToPassage('driving/actions/coffee');
+      }, 2000);
+    },
     sitUpSequence() {
       this.$refs["sit-up"].play();
       setTimeout(() => {
         this.goToPassage('driving/actions/window');
       }, 2000);
+    },
+    startRadioLoop() {
+      this.$refs["music-loop"].play();
+    },
+    radioSequence() {
+      this.$refs["music-open"].fadeIn();
+      setTimeout(() => {
+        this.goToPassage('driving/actions/radio');
+      }, 7000);
     },
     ...mappedMutations,
     ...mappedActions,
