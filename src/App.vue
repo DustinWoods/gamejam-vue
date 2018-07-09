@@ -16,6 +16,33 @@ export default {
     }
   },
   methods: {
+    fadeInBackgrounNoise(duration) {
+      if(!this.currentBackgroundNoise) {
+        this.currentBackgroundNoise = this.$refs.driving;
+      }
+      this.currentBackgroundNoise.fadeIn(duration);      
+    },
+    fadeOutBackgrounNoise(duration) {
+      if(!this.currentBackgroundNoise) {
+        this.currentBackgroundNoise = this.$refs.driving;
+      }
+      this.currentBackgroundNoise.fadeOut(duration);
+    },
+    windowSequence() {
+      this.$refs.window.play();
+      this.$refs.driving.fadeOut(1000);
+      this.$refs['driving-window-open'].fadeIn(1000);
+      this.currentBackgroundNoise = this.$refs['driving-window-open'];
+      setTimeout(() => {
+        this.goToPassage('driving/actions/window');
+      }, 2000);
+    },
+    sitUpSequence() {
+      this.$refs["sit-up"].play();
+      setTimeout(() => {
+        this.goToPassage('driving/actions/window');
+      }, 2000);
+    },
     ...mappedMutations,
     ...mappedActions,
   },

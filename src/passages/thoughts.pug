@@ -1,9 +1,9 @@
-passage(title='driving/thoughts/idle/final' fallAsleep="true" sleepSequenceMin=4 sleepSequenceIdeal=10 @leave='goToPassage("deep-sleep")')
+passage(title='driving/thoughts/idle/final' fallAsleep="true" sleepSequenceMin=12 sleepSequenceIdeal=10 @leave='goToPassage("deep-sleep")')
   .passage-box.thoughts
     passage(sequence=0): p I bet I'm not the only one this tired.
     passage(sequence=1): p It's not a big deal.
     passage(sequence=2): p Next time though, I won't commit to so much.
-    passage(sequence=3): p I need to learn to say now sometimes.
+    passage(sequence=3): p I need to learn to say no sometimes.
     passage(sequence=4): p But it's okay, she's important to me.
     passage(sequence=5): p I bet she'd tell me to pull over.
     passage(sequence=6): p I love the way she voices her opinions.
@@ -17,7 +17,7 @@ passage(title='driving/thoughts/idle/final' fallAsleep="true" sleepSequenceMin=4
     p: hyperlink(to='+1') ...
     //- Drift off to sleep finally
 
-passage(title='driving/thoughts/action/coffee' fallAsleep="true" sleepSequenceIdeal=8 @falling='$refs.driving.fadeOut(2500)' @leave='goToPassage("driving/thoughts/idle/denial")')
+passage(title='driving/thoughts/action/coffee' fallAsleep="true" sleepSequenceIdeal=8 @falling='fadeOutBackgrounNoise(2500)' @leave='goToPassage("driving/thoughts/idle/denial")')
   .passage-box.thoughts
     passage(sequence=0): p I wonder how much of coffee is a placebo?
     passage(sequence=1): p I've defintely fallen asleep after drinking coffee.
@@ -31,7 +31,7 @@ passage(title='driving/thoughts/action/coffee' fallAsleep="true" sleepSequenceId
     p: hyperlink(to='+1') ...
     //- Drift off to sleep
 
-passage(title='driving/thoughts/action/window' fallAsleep="true" sleepSequenceIdeal=8 @falling='$refs.driving.fadeOut(2500)' @leave='goToPassage("driving/thoughts/idle/noise")')
+passage(title='driving/thoughts/action/window' fallAsleep="true" sleepSequenceIdeal=8 @falling='fadeOutBackgrounNoise(2500)' @leave='goToPassage("driving/thoughts/idle/noise")')
   .passage-box.thoughts
     passage(sequence=0): p The cool air reminds me of the beach.
     passage(sequence=1): p My Dad would always open his window when he was tired.
@@ -46,7 +46,7 @@ passage(title='driving/thoughts/action/window' fallAsleep="true" sleepSequenceId
     p: hyperlink(to='+1') ...
     //- Drift off to sleep
 
-passage(title='driving/thoughts/action/radio' fallAsleep="true" sleepSequenceIdeal=8 @falling='$refs.driving.fadeOut(2500)' @leave='goToPassage("driving/thoughts/idle/air")')
+passage(title='driving/thoughts/action/radio' fallAsleep="true" sleepSequenceIdeal=8 @falling='fadeOutBackgrounNoise(2500)' @leave='goToPassage("driving/thoughts/idle/air")')
   .passage-box.thoughts
     passage(sequence=0): p Pop music is all the same.
     passage(sequence=1): p I wish more people appreciated underated art.
@@ -60,7 +60,7 @@ passage(title='driving/thoughts/action/radio' fallAsleep="true" sleepSequenceIde
     p: hyperlink(to='+1') ...
     //- Drift off to sleep
 
-passage(title='driving/thoughts/action/breathing' fallAsleep="true" sleepSequenceIdeal=8 @falling='$refs.driving.fadeOut(2500)' @leave='goToPassage("driving/thoughts/idle/pullover")')
+passage(title='driving/thoughts/action/breathing' fallAsleep="true" sleepSequenceIdeal=8 @falling='fadeOutBackgrounNoise(2500)' @leave='goToPassage("driving/thoughts/idle/pullover")')
   .passage-box.thoughts
     passage(sequence=0): p How do you "breath in the stomach"?
     passage(sequence=1): p That doesn't make sense.
@@ -74,7 +74,7 @@ passage(title='driving/thoughts/action/breathing' fallAsleep="true" sleepSequenc
     p: hyperlink(to='+1') ...
     //- Drift off to sleep    
 
-passage(title='driving/thoughts/action/posture' fallAsleep="true" sleepSequenceIdeal=8 @falling='$refs.driving.fadeOut(2500)' @leave='goToPassage("driving/thoughts/idle/final-shakeoff")')
+passage(title='driving/thoughts/action/posture' fallAsleep="true" sleepSequenceIdeal=8 @falling='fadeOutBackgrounNoise(2500)' @leave='goToPassage("driving/thoughts/idle/final-shakeoff")')
   .passage-box.thoughts
     //- Pause
     passage(sequence=0): p I need to sit like this more often.

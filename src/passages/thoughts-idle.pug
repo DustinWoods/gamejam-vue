@@ -1,4 +1,4 @@
-passage(title='driving/thoughts/idle/surroundings' @enter='$refs.driving.fadeIn(1000)')
+passage(title='driving/thoughts/idle/surroundings' @enter='fadeInBackgrounNoise(1000)')
   .passage-box.thoughts
     p I'm so tired.
     p It's been a long day.
@@ -9,7 +9,7 @@ passage(title='driving/thoughts/idle/surroundings' @enter='$refs.driving.fadeIn(
     p It's nice to have time to myself.
     p: hyperlink(to='driving/choices') I need to stay awake.
 
-passage.wake-up.slow(title='driving/thoughts/idle/denial' @enter='$refs.driving.fadeIn(100)')
+passage.wake-up.slow(title='driving/thoughts/idle/denial' @enter='fadeInBackgrounNoise(100)')
   .passage-box.thoughts
     p Am I starting to drift off?
     p It's not even that late.
@@ -18,7 +18,7 @@ passage.wake-up.slow(title='driving/thoughts/idle/denial' @enter='$refs.driving.
     p It's all good.
     p: hyperlink(to='driving/choices') I got this.
   
-passage.wake-up(title='driving/thoughts/idle/noise' @enter='$refs.driving.fadeIn(100)')
+passage.wake-up(title='driving/thoughts/idle/noise' @enter='fadeInBackgrounNoise(100)')
   .passage-box.thoughts
     p I need to shake this off.
     p Something to focus on.
@@ -27,7 +27,7 @@ passage.wake-up(title='driving/thoughts/idle/noise' @enter='$refs.driving.fadeIn
     p Noise might help.
     p: hyperlink(to='driving/choices') I got this.
 
-passage.wake-up(title='driving/thoughts/idle/air' @enter='$refs.driving.fadeIn(100)')
+passage.wake-up(title='driving/thoughts/idle/air' @enter='fadeInBackgrounNoise(100)')
   .passage-box.thoughts
     p Shit, this isn't good.
     p How much time has passed?
@@ -37,7 +37,7 @@ passage.wake-up(title='driving/thoughts/idle/air' @enter='$refs.driving.fadeIn(1
     p The air should wake me up.
     p: hyperlink(to='driving/choices') I got this.
 
-passage.wake-up(title='driving/thoughts/idle/pullover' @enter='$refs.driving.fadeIn(100)')
+passage.wake-up(title='driving/thoughts/idle/pullover' @enter='fadeInBackgrounNoise(100)')
   .passage-box.thoughts
     p Did I do it again?
     p Maybe I should pull over.
@@ -46,7 +46,7 @@ passage.wake-up(title='driving/thoughts/idle/pullover' @enter='$refs.driving.fad
     p Sleeping on the side of the road?
     p: hyperlink(to='driving/choices') I got this.
 
-passage.wake-up.slowest(title='driving/thoughts/idle/final-shakeoff' @enter='$refs.driving.fadeIn(100)')
+passage.wake-up.slowest(title='driving/thoughts/idle/final-shakeoff' @enter='fadeInBackgrounNoise(100)')
   .passage-box.thoughts
     p I think I'm almost there.
     p I can keep pushing through.
